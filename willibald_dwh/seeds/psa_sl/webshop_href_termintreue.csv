@@ -1,0 +1,17 @@
+"sys_loadingid","sys_cdc","sys_checksum","Anzahl Tage von","Anzahl Tage bis","bezeichnung","bewertung"
+1,I,0x8a7ba5eebc8ae85073ea0b86a04a6eed67957bd6962eb6773043203efd3c2044,-1000000,-5,mehr als 5 Tage früher,viel zu früh
+1,I,0x1b1586cd74f391a667480530061d9bab464ba8c66955c25b5beafb30a3a09351,-5,"0",bis zu 5 Tagen zu früh,zu früh
+1,I,0x920335c44b384566404b797f2d31b997d5db728bcf721649fa0a669c09b94f46,"0","1",pünktlich,pünktlich
+1,I,0xf113330636ec7644d7614ec892581652044e5e8238399e8ff849996a25363b06,"1","4",bis zu 3 Tagen zu spät,zu spät
+1,I,0xb4615a533f7549776a145c61770943a2d8cfd210aaeaf5d86d572256d40f3f63,"4","10","4 bis 10 Tage zu spät",deutlich zu spät
+1,I,0x2f882eac645ee7ced40200ac7899422123381bcae36849016b0817ce988eddca,"10","1000000",mehr als 10 Tage spät,viel zu spät
+1,I,0x5665a2cee3f1ce7e311954511987ebb733c2d5082d38ece1b0295a93d10d47fa,xxx,xxx,Auftrag zu lange aktiv,Fehler
+1,I,0x07c87a9c1bdd3c63360bfd763fb5e5092de2c5c9b6c9c4f2fd161bdb032d1cae,zzz,zzz,"Abverkauf, keine Lieferung",irrelevant
+1,I,0xc21593d062ccecb0ffa7befcac880603aa6f72da930222a29600790027731e8b,yyy,yyy,noch nicht geliefert,noch nicht relevant
+2,I,0x1f216301c11524ac7483c75f2c9f1d9f5ec38b138c3dbdefa8dc48095b7336f9,-10,-4,bis zu 10 Tagen zu früh,deutlich zu früh
+2,I,0x2f9e5b43e6ebbd8610c49fd88903020cca7f0fa25be6ffd51096ac6df64eba78,-4,-1,bis zu 3 Tagen zu früh,zu früh
+2,I,0x920335c44b384566404b797f2d31b997d5db728bcf721649fa0a669c09b94f46,-1,"1",pünktlich,pünktlich
+2,C,0xe68077af40e22f1ad48b11fab610590bca26ca1fa6c2a443e5a13e0918f89d39,-1000000,-10,mehr als 10 Tage zu früh,viel zu früh
+2,C,0xf84395bc77c65bf80494c8d9913f413ec1acf6af452cfeb4e087055b6b6e1cfb,"4","10",bis zu 10 Tage zu spät,deutlich zu spät
+2,D,0x,-5,,,
+2,D,0x,"0",,,
