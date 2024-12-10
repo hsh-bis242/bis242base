@@ -3,11 +3,13 @@ willibald_dwh:
     dev:
       type: duckdb
       path: dev_willibald_dwh.duckdb
+      schema: willibald
       threads: 1
 
     prod:
       type: duckdb
       path: prod_willibald_dwh.duckdb
+      schema: willibald
       threads: 4
 
   target: dev

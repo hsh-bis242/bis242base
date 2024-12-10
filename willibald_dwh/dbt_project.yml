@@ -34,3 +34,13 @@ models:
     # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: view
+
+seeds:
+  willibald_dwh:
+    +enabled: true
+    
+    # This configures seeds/meta_cl/*.csv
+    meta_cl:
+      +schema: meta_cl
+    psa_sl:
+      +schema: psa_cl
