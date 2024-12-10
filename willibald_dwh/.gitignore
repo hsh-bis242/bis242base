@@ -2,6 +2,3 @@
 target/
 dbt_packages/
 logs/
-
-prod_willibald_dwh.duckdb
-dev_willibald_dwh.duckdb
