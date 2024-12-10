@@ -1,0 +1,13 @@
+willibald_dwh:
+  outputs:
+    dev:
+      type: duckdb
+      path: dev_willibald_dwh.duckdb
+      threads: 1
+
+    prod:
+      type: duckdb
+      path: prod_willibald_dwh.duckdb
+      threads: 4
+
+  target: dev
