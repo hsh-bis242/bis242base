@@ -1,0 +1,49 @@
+version: 2
+
+seeds:
+  - name: roadshow_bestellung
+    docs:
+      show: true
+    meta:
+      unique_key = bestellungid, produktid
+
+    # tests:
+    #   - <test>
+
+    columns:
+      - name: sys_loadingid
+        description: The id of the loading process
+    
+      - name: sys_cdc
+        description: The change data capture column
+        
+      - name: sys_checksum
+
+      - name: bestellungid
+        description: The order's id
+
+      - name: kundeid
+
+      - name: vereinspartnerid
+
+      - name: kaufdatum
+      
+      - name: kreditkarte
+      
+      - name: gueltigbis
+      
+      - name: kkfirma
+      
+      - name: produktid
+      
+      - name: menge
+      
+      - name: preis
+      
+      - name: rabatt
+
+  - name: webshop_bestellung
+    docs:
+      show: true
+    meta:
+      unique_key: bestellungid
