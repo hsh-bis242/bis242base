@@ -5,7 +5,7 @@ seeds:
     docs:
       show: true
     meta:
-      unique_key = bestellungid, produktid
+      unique_key: bestellungid, produktid
 
     # tests:
     #   - <test>
