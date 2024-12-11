@@ -1,1 +1,1 @@
-{{ psa_view('webshop_bestellung', 'bestellungid') }}
+{{ psa_view('webshop_bestellung') }}
