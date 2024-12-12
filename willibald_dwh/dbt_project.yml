@@ -42,5 +42,9 @@ seeds:
     # This configures seeds/meta_cl/*.csv
     meta_cl:
       +schema: meta_cl
+      loading_history:
+        +column_types:
+          loadingts: timestamp
+
     psa_sl:
       +schema: psa_cl
