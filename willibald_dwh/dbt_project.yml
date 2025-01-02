@@ -34,6 +34,8 @@ models:
     # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: view
+    psa_sl:
+      +schema: psa_sl
 
 seeds:
   willibald_dwh:
@@ -47,4 +49,4 @@ seeds:
           loadingts: timestamp
 
     psa_sl:
-      +schema: psa_cl
+      +schema: psa_sl
