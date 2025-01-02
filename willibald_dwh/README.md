@@ -1,15 +1,14 @@
-Welcome to your new dbt project!
+Welcome to the bis-242 dbt project.
 
-### Using the starter project
+### Using the willibald base project
 
-Try running the following commands:
+To get up and running run following commands:
+- dbt deps
+- dbt debug
+- dbt seed
 - dbt run
 - dbt test
 
-
 ### Resources:
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+- Learn about this project's structure [on the slides](https://github.com/hsh-bis242/hsh-bi-class)
