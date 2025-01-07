@@ -12,3 +12,69 @@ seeds:
       show: true
     meta:
       unique_key: bestellungid
+
+  - name: webshop_href_termintreue
+    docs:
+      show: true
+    meta:
+      unique_key: "\"Anzahl Tage von\""
+
+  - name: webshop_kunde
+    docs:
+      show: true
+    meta:
+      unique_key: kundeid
+
+  - name: webshop_lieferadresse
+    docs:
+      show: true
+    meta:
+      unique_key: lieferadrid
+
+  - name: webshop_lieferdienst
+    docs:
+      show: true
+    meta:
+      unique_key: lieferdienstid
+
+  - name: webshop_lieferung
+    docs:
+      show: true
+    meta:
+      unique_key: bestellungid, posid, lieferadrid, lieferdienstid
+
+  - name: webshop_position
+    docs:
+      show: true
+    meta:
+      unique_key: bestellungid, posid
+
+  - name: webshop_produkt
+    docs:
+      show: true
+    meta:
+      unique_key: produktid
+
+  - name: webshop_produktkategorie
+    docs:
+      show: true
+    meta:
+      unique_key: katid
+
+  - name: webshop_ref_produkt_typ
+    docs:
+      show: true
+    meta:
+      unique_key: typ
+
+  - name: webshop_vereinspartner
+    docs:
+      show: true
+    meta:
+      unique_key: vereinspartnerid
+
+  - name: webshop_wohnort
+    docs:
+      show: true
+    meta:
+      unique_key: kundeid, von
