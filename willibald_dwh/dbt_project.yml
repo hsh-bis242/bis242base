@@ -32,8 +32,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   willibald_dwh:
     # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
     psa_sl:
       +schema: psa_sl
 
