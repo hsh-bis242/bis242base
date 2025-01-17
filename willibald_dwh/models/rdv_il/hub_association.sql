@@ -9,6 +9,9 @@ source_models:
     - name: v_webshop_kunde
       bk_columns:
         - vereinspartnerid
+    - name: v_roadshow_bestellung
+      bk_columns:
+        - vereinspartnerid
 
 {%- endset -%}
 

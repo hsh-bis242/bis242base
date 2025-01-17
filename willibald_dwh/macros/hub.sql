@@ -28,6 +28,6 @@ SELECT	hkey_{{ this.name }},
 		sys_rsrc,
         {{ business_key_names | join(', ') }}
   FROM	cte_base
-QUALIFY	row_number() OVER (PARTITION BY {{ business_key_names | join(', ') }} ORDER BY rsrc_order, sys_loadingid ASC) = 1
+QUALIFY	row_number() OVER (PARTITION BY {{ business_key_names | join(', ') }} ORDER BY sys_loadingid, rsrc_order ASC) = 1
 
 {%- endmacro -%}
