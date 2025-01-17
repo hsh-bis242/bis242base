@@ -31,9 +31,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   willibald_dwh:
-    # Config indicated by + and applies to all files under models/example/
+    # Config indicated by + and applies to all files under models/psa_sl/
     psa_sl:
       +schema: psa_sl
+
+    rdv_il:
+      +schema: rdv_il
 
 seeds:
   willibald_dwh:
