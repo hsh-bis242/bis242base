@@ -25,14 +25,14 @@ SELECT		{{hkey(source_model_name = source_model_name, list_columns = v_all_colum
             {%- for current_transactional_attribute in transactional_attributes %}
                 {% if loop.first %},{% endif %}
                 {{ source_model_name }}.{{ current_transactional_attribute.column_name }} AS {{ current_transactional_attribute.business_name }} {%- if not loop.last %},{% endif %}
-            {%- endfor %}
+            {%- endfor -%}
   FROM		willibald_psa_sl.v_webshop_kunde
  WHERE		{{ source_model_name }}.sys_cdc != 'D'
-{% if v_all_columns|length == 2 %}
+{% if v_all_columns|length == 2 -%}
     {% for current_column in v_all_columns -%}
         AND		{{ source_model_name }}.{{ current_column }} IS NOT NULL
-    {% endfor %}
-{% endif %}
+    {% endfor -%}
+{% endif -%}
  GROUP BY	{{ source_model_name }}.vereinspartnerid, {{ source_model_name }}.kundeid
 
  {%- endmacro -%}
