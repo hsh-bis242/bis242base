@@ -7,6 +7,9 @@
     {% for current_bk in current_hub.bk_columns %}
         {% do v_all_columns.append(current_bk.column_name) %}
     {% endfor %}
+    {% for current_transactional_attribute in transactional_attributes %}
+        {% do v_all_columns.append(current_transactional_attribute.column_name) %}
+    {% endfor %}
 {% endfor -%}
 
 SELECT		{{hkey(source_model_name = source_model_name, list_columns = v_all_columns, hkey_name = this.name)}},
@@ -25,8 +28,11 @@ SELECT		{{hkey(source_model_name = source_model_name, list_columns = v_all_colum
             {%- endfor %}
   FROM		willibald_psa_sl.v_webshop_kunde
  WHERE		{{ source_model_name }}.sys_cdc != 'D'
-   AND		{{ source_model_name }}.kundeid IS NOT NULL
-   AND		{{ source_model_name }}.vereinspartnerid IS NOT NULL
+{% if v_all_columns|length == 2 %}
+    {% for current_column in v_all_columns -%}
+        AND		{{ source_model_name }}.{{ current_column }} IS NOT NULL
+    {% endfor %}
+{% endif %}
  GROUP BY	{{ source_model_name }}.vereinspartnerid, {{ source_model_name }}.kundeid
 
  {%- endmacro -%}

@@ -2,14 +2,14 @@
 
 source_model_name: v_webshop_kunde
 hubs:
-    - name: hub_customer
-      bk_columns:
-        - column_name: kundeid
-          business_name: customer_id
-    - name: hub_association
-      bk_columns:
-        - column_name: vereinspartnerid
-          business_name: association_id
+  - name: hub_customer
+    bk_columns:
+      - column_name: kundeid
+        business_name: customer_id
+  - name: hub_association
+    bk_columns:
+      - column_name: vereinspartnerid
+        business_name: association_id
 transactional_attributes: []
     
 {%- endset -%}
