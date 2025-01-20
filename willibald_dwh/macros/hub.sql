@@ -3,7 +3,7 @@
 WITH cte_base AS (
 {% for current_source_model in source_models -%}
 
-SELECT	{{hkey(source_model_name = current_source_model.name, list_columns = current_source_model.bk_columns, hkey_name = this.name)}},
+SELECT	{{hashcolumn(source_model_name = current_source_model.name, list_columns = current_source_model.bk_columns, hashcolumn_name = "hkey_" + this.name)}},
 	    {{ current_source_model.name }}.sys_loadingid,
 	    '{{ current_source_model.name }}' AS sys_rsrc,
 	    {{ loop.index }} AS rsrc_order,
