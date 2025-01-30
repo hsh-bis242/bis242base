@@ -15,3 +15,6 @@ dbt debug
 dbt seed
 dbt run
 ```
+
+# Data model
+![willibald_datavault](https://github.com/user-attachments/assets/d1a7869a-db03-43df-9d10-e4921483a17c)
