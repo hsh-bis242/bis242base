@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: hub_association
+  - name: hub_customer
+  - name: lnk_customer_association
+  - name: lnk_customer_residence
+  - name: sat_customer_context
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_customer
+            - sys_loadingid
+    columns:
+      - name: hkey_hub_customer
+        data_tests:
+          - relationships:
+              to: ref('hub_customer')
+              field: hkey_hub_customer
+      
