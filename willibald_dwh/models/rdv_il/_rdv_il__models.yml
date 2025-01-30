@@ -1,0 +1,59 @@
+version: 2
+
+models:
+  - name: hub_association
+    columns:
+      - name: association_id
+        data_tests:
+          - unique
+
+  - name: hub_customer
+    columns:
+      - name: customer_id
+        data_tests:
+          - unique
+
+  - name: lnk_customer_association
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_customer
+            - hkey_hub_association
+    columns:
+      - name: hkey_hub_customer
+        data_tests:
+          - relationships:
+              to: ref('hub_customer')
+              field: hkey_hub_customer
+      - name: hkey_hub_association
+        data_tests:
+          - relationships:
+              to: ref('hub_association')
+              field: hkey_hub_association
+
+  - name: lnk_customer_residence
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_customer
+            - validfrom
+    columns:
+      - name: hkey_hub_customer
+        data_tests:
+          - relationships:
+              to: ref('hub_customer')
+              field: hkey_hub_customer
+
+  - name: sat_customer_context
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_customer
+            - sys_loadingid
+    columns:
+      - name: hkey_hub_customer
+        data_tests:
+          - relationships:
+              to: ref('hub_customer')
+              field: hkey_hub_customer
+      

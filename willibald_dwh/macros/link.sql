@@ -12,7 +12,7 @@
     {% endfor %}
 {% endfor -%}
 
-SELECT		{{hkey(source_model_name = source_model_name, list_columns = v_all_columns, hkey_name = this.name)}},
+SELECT		{{ hashcolumn(source_model_name = source_model_name, list_columns = v_all_columns, hashcolumn_name = "hkey_" + this.name)}},
 	   		min({{ source_model_name }}.sys_loadingid) AS sys_loadingid,
 	   		'{{ source_model_name }}' AS sys_rsrc,
             {% for current_hub in hubs -%}
@@ -20,7 +20,7 @@ SELECT		{{hkey(source_model_name = source_model_name, list_columns = v_all_colum
                 {% for current_bk in current_hub.bk_columns -%}
                     {% do v_all_bk_columns.append(current_bk.column_name) -%}
                 {% endfor -%}
-                {{ hkey(source_model_name = source_model_name, list_columns = v_all_bk_columns, hkey_name = current_hub.name) }} {%- if not loop.last %},{% endif %}
+                {{ hashcolumn(source_model_name = source_model_name, list_columns = v_all_bk_columns, hashcolumn_name = "hkey_" + current_hub.name) }} {%- if not loop.last %},{% endif %}
             {% endfor %}
             {%- for current_transactional_attribute in transactional_attributes %}
                 {% if loop.first %},{% endif %}
