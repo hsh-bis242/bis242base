@@ -1,0 +1,1 @@
+{{ psa_view('webshop_produkt') }}
