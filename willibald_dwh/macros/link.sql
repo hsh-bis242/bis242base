@@ -20,12 +20,12 @@ SELECT		{{ hashcolumn(source_model_name = source_model_name, list_columns = v_al
                 {% for current_bk in current_hub.bk_columns -%}
                     {% do v_all_bk_columns.append(current_bk.column_name) -%}
                 {% endfor -%}
-                {{ hashcolumn(source_model_name = source_model_name, list_columns = v_all_bk_columns, hashcolumn_name = "hkey_" + current_hub.name) }} {%- if not loop.last %},{% endif -%}
+                {{ hashcolumn(source_model_name = source_model_name, list_columns = v_all_bk_columns, hashcolumn_name = "hkey_" + current_hub.name) }} {% if not loop.last %},{% endif -%}
             {% endfor -%}
-            {%- for current_transactional_attribute in transactional_attributes %}
-                {% if loop.first %},{% endif %}
-                {{ source_model_name }}.{{ current_transactional_attribute.column_name }} AS {{ current_transactional_attribute.business_name }} {%- if not loop.last %},{% endif -%}
-            {%- endfor -%}
+            {% for current_transactional_attribute in transactional_attributes -%}
+                {% if loop.first %},{% endif -%}
+                {{ source_model_name }}.{{ current_transactional_attribute.column_name }} AS {{ current_transactional_attribute.business_name }} {%- if not loop.last %},{% endif %}
+            {% endfor -%}
   FROM		{{ ref(source_model_name) }}
  WHERE		{{ source_model_name }}.sys_cdc != 'D'
 {% if v_all_columns|length == 2 -%}
