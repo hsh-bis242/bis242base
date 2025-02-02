@@ -44,6 +44,24 @@ models:
               to: ref('hub_customer')
               field: hkey_hub_customer
 
+  - name: lnk_productcategory_supercategory
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_productcategory
+            - hkey_hub_supercategory
+    columns:
+      - name: hkey_hub_productcategory
+        data_tests:
+          - relationships:
+              to: ref('hub_productcategory')
+              field: hkey_hub_productcategory
+      - name: hkey_hub_supercategory
+        data_tests:
+          - relationships:
+              to: ref('hkey_hub_supercategory')
+              field: hkey_hkey_hub_supercategory
+
   - name: sat_customer_context
     data_tests:
       - dbt_utils.unique_combination_of_columns:
@@ -57,3 +75,15 @@ models:
               to: ref('hub_customer')
               field: hkey_hub_customer
       
+  - name: lsat_productcategory_supercategory_dkh
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_lnk_productcategory_supercategory
+            - sys_loadingid
+    columns: 
+      - name: hkey_lnk_productcategory_supercategory
+        data_tests:
+          - relationships:
+              to: ref('lnk_productcategory_supercategory')
+              field: hkey_lnk_productcategory_supercategory

@@ -7,20 +7,20 @@
     {% for current_bk in current_hub.bk_columns -%}
         {% do v_all_columns.append(current_bk.column_name) -%}
     {% endfor -%}
-    {% for current_transactional_attribute in transactional_attributes -%}
-        {% do v_all_columns.append(current_transactional_attribute.column_name) -%}
-    {% endfor -%}
+{% endfor -%}
+{% for current_transactional_attribute in transactional_attributes -%}
+    {% do v_all_columns.append(current_transactional_attribute.column_name) -%}
 {% endfor -%}
 
 SELECT		{{ hashcolumn(source_model_name = source_model_name, list_columns = v_all_columns, hashcolumn_name = "hkey_" + this.name)}},
-	   		min({{ source_model_name }}.sys_loadingid) AS sys_loadingid,
+	   		MIN({{ source_model_name }}.sys_loadingid) AS sys_loadingid,
 	   		'{{ source_model_name }}' AS sys_rsrc,
             {% for current_hub in hubs -%}
                 {% set v_all_bk_columns = [] -%}
                 {% for current_bk in current_hub.bk_columns -%}
                     {% do v_all_bk_columns.append(current_bk.column_name) -%}
                 {% endfor -%}
-                {{ hashcolumn(source_model_name = source_model_name, list_columns = v_all_bk_columns, hashcolumn_name = "hkey_" + current_hub.name) }} {% if not loop.last %},{% endif -%}
+                {{ hashcolumn(source_model_name = source_model_name, list_columns = v_all_bk_columns, hashcolumn_name = "hkey_" + current_hub.name) }} {%- if not loop.last %},{% endif %}
             {% endfor -%}
             {% for current_transactional_attribute in transactional_attributes -%}
                 {% if loop.first %},{% endif -%}
