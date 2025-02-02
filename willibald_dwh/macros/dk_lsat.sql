@@ -14,7 +14,7 @@ SELECT	md5(cast(coalesce(cast(cte_reference_history.katid as TEXT), '_dbt_utils_
 		sys_loadingid,
 		sys_loadingid_validto
   FROM 	cte_reference_history
- WHERE 	sys_cdc != 'D';
+ WHERE 	sys_cdc != 'D'
 */
 
 {%- endmacro -%}
