@@ -1,4 +1,3 @@
-
 {% macro psa_view(p_psa_table) %}
 
 {% set v_psa_table_unique_key = 1 %}
