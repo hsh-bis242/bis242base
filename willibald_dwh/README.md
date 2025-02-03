@@ -21,7 +21,15 @@ From this point on all the data vault loading is implemented as proposed by [Roe
 
 A first loading step is to calculate a current value flag in a view on the persisted staging tables. Therefore a macro "psa_view" is created, which depends on a new meta attribute called unique_key attached to the psa seed tables (you can see the definitions within psa_sl_properties.yml).
 
+### How is the data vault of this project implemented?
+
+Data vault consists of three different entities. Hub, Links and Satellite. There is a macro for everyone of these entities.
+
 Please consider it a bad habbit to write all the data vault loading functionality from ground up. There are at least two very advanced packages for loading data to a data vault, that should be your first choice. We have refrained from using these packages for educating reasons.
+
+### How are references validatet?
+
+Every link comes with his own driving key link satellite, which marks it's validity on all the loadingids. These LSATs have to be joined to get the correct reference history.
 
 ## Resources:
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)

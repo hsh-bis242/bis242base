@@ -12,5 +12,10 @@ SELECT	{{ hashcolumn(source_model_name = "cte_reference_history", list_columns =
 		sys_loadingid_validto
   FROM 	cte_reference_history
  WHERE 	sys_cdc != 'D'
+{% if keys|length == 2 -%}
+	{% for current_key in keys -%}
+   AND	{{ current_key.name }} IS NOT NULL
+	{% endfor -%}
+{% endif -%}
 
 {%- endmacro -%}
