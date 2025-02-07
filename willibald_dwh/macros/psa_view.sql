@@ -1,6 +1,6 @@
 {% macro psa_view(p_psa_table) %}
 
-{% set v_psa_table_unique_key = 1 %}
+{% set v_psa_table_unique_key = [] %}
 
 {% if execute %}
 
@@ -15,7 +15,7 @@
 
 SELECT
   "sys_loadingid",
-  LEAD("sys_loadingid") OVER (PARTITION BY {{ v_psa_table_unique_key }} ORDER BY "sys_loadingid" ASC) IS NULL AS "sys_islatest",
+  LEAD("sys_loadingid") OVER (PARTITION BY {{ v_psa_table_unique_key | join(", ") }} ORDER BY "sys_loadingid" ASC) IS NULL AS "sys_islatest",
   "sys_cdc",
   "sys_checksum",
 	{{ dbt_utils.star(from=ref(p_psa_table), except=['sys_loadingid','sys_cdc','sys_checksum']) }}
