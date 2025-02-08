@@ -1,0 +1,89 @@
+version: 2
+
+models:
+  - name: hub_association
+    columns:
+      - name: association_id
+        data_tests:
+          - unique
+
+  - name: hub_customer
+    columns:
+      - name: customer_id
+        data_tests:
+          - unique
+
+  - name: lnk_customer_association
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_customer
+            - hkey_hub_association
+    columns:
+      - name: hkey_hub_customer
+        data_tests:
+          - relationships:
+              to: ref('hub_customer')
+              field: hkey_hub_customer
+      - name: hkey_hub_association
+        data_tests:
+          - relationships:
+              to: ref('hub_association')
+              field: hkey_hub_association
+
+  - name: lnk_customer_residence
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_customer
+            - validfrom
+    columns:
+      - name: hkey_hub_customer
+        data_tests:
+          - relationships:
+              to: ref('hub_customer')
+              field: hkey_hub_customer
+
+  - name: lnk_productcategory_supercategory
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_productcategory
+            - hkey_hub_supercategory
+    columns:
+      - name: hkey_hub_productcategory
+        data_tests:
+          - relationships:
+              to: ref('hub_productcategory')
+              field: hkey_hub_productcategory
+      - name: hkey_hub_supercategory
+        data_tests:
+          - relationships:
+              to: ref('hkey_hub_supercategory')
+              field: hkey_hkey_hub_supercategory
+
+  - name: sat_customer_context
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_customer
+            - sys_loadingid
+    columns:
+      - name: hkey_hub_customer
+        data_tests:
+          - relationships:
+              to: ref('hub_customer')
+              field: hkey_hub_customer
+      
+  - name: lsat_productcategory_supercategory_dkh
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_lnk_productcategory_supercategory
+            - sys_loadingid
+    columns: 
+      - name: hkey_lnk_productcategory_supercategory
+        data_tests:
+          - relationships:
+              to: ref('lnk_productcategory_supercategory')
+              field: hkey_lnk_productcategory_supercategory
