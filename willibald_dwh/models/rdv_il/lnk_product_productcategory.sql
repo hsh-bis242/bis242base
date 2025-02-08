@@ -1,15 +1,14 @@
 {%- set yaml_metadata -%}
 
-source_model_name: v_webshop_produktkategorie
+source_model_name: v_webshop_produkt
 hubs:
+  - name: hub_product
+    bk_columns:
+      - column_name: produktid
+        business_name: product_id
   - name: hub_productcategory
     bk_columns:
       - column_name: katid
-        business_name: productcategory_id
-{# pseudo hub: this hub does not exist, it is just a referenz on itself -#}
-  - name: hub_supercategory
-    bk_columns:
-      - column_name: oberkatid
         business_name: productcategory_id
 transactional_attributes: []
     

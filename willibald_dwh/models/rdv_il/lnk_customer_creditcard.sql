@@ -1,16 +1,20 @@
 {%- set yaml_metadata -%}
 
-source_model_name: v_webshop_produktkategorie
+source_model_name: v_webshop_kunde
 hubs:
-  - name: hub_productcategory
+  - name: hub_customer
     bk_columns:
-      - column_name: katid
-        business_name: productcategory_id
-{# pseudo hub: this hub does not exist, it is just a referenz on itself -#}
-  - name: hub_supercategory
+      - column_name: kundeid
+        business_name: customer_id
+  - name: hub_creditcard
     bk_columns:
-      - column_name: oberkatid
-        business_name: productcategory_id
+      - column_name: kreditkarte
+        business_name: creditcard_number
+      - column_name: kkfirma
+        business_name: issuer
+      - column_name: gueltigbis
+        business_name: validto
+        
 transactional_attributes: []
     
 {%- endset -%}
