@@ -2,13 +2,13 @@ willibald_dwh:
   outputs:
     dev:
       type: duckdb
-      path: ~/dev_willibald_dwh.duckdb
+      path: "{{ env_var('WILLIBALD_DWH_DEV_PATH', '~/dev_willibald_dwh.duckdb') }}"
       schema: willibald
       threads: 1
 
     prod:
       type: duckdb
-      path: ~/prod_willibald_dwh.duckdb
+      path: "{{ env_var('WILLIBALD_DWH_DEV_PATH', '~/prod_willibald_dwh.duckdb') }}"
       schema: willibald
       threads: 4
 

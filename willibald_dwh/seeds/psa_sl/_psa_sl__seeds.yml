@@ -5,76 +5,95 @@ seeds:
     docs:
       show: true
     meta:
-      unique_key: bestellungid, produktid
+      unique_key:
+        - bestellungid
+        - produktid
 
   - name: webshop_bestellung
     docs:
       show: true
     meta:
-      unique_key: bestellungid
+      unique_key:
+        - bestellungid
 
   - name: webshop_href_termintreue
     docs:
       show: true
     meta:
-      unique_key: "\"Anzahl Tage von\""
+      unique_key:
+        - "\"Anzahl Tage von\""
 
   - name: webshop_kunde
     docs:
       show: true
     meta:
-      unique_key: kundeid
+      unique_key:
+        - kundeid
 
   - name: webshop_lieferadresse
     docs:
       show: true
     meta:
-      unique_key: lieferadrid
+      unique_key:
+        - lieferadrid
 
   - name: webshop_lieferdienst
     docs:
       show: true
     meta:
-      unique_key: lieferdienstid
+      unique_key:
+        - lieferdienstid
 
   - name: webshop_lieferung
     docs:
       show: true
     meta:
-      unique_key: bestellungid, posid, lieferadrid, lieferdienstid
+      unique_key:
+        - bestellungid
+        - posid
+        - lieferadrid
+        - lieferdienstid
 
   - name: webshop_position
     docs:
       show: true
     meta:
-      unique_key: bestellungid, posid
+      unique_key:
+        - bestellungid
+        - posid
 
   - name: webshop_produkt
     docs:
       show: true
     meta:
-      unique_key: produktid
+      unique_key:
+        - produktid
 
   - name: webshop_produktkategorie
     docs:
       show: true
     meta:
-      unique_key: katid
+      unique_key:
+        - katid
 
   - name: webshop_ref_produkt_typ
     docs:
       show: true
     meta:
-      unique_key: typ
+      unique_key:
+        - typ
 
   - name: webshop_vereinspartner
     docs:
       show: true
     meta:
-      unique_key: vereinspartnerid
+      unique_key:
+        - vereinspartnerid
 
   - name: webshop_wohnort
     docs:
       show: true
     meta:
-      unique_key: kundeid, von
+      unique_key:
+        - kundeid
+        - von
