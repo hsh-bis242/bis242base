@@ -2,20 +2,20 @@
 
 source_model_name: v_roadshow_bestellung
 parent_ensemble:
-   name: hub_product
-    bk_columns:
+  name: hub_product
+  bk_columns:
       - column_name: produktid
         business_name: product_id
-   name: hub_association
-    bk_columns:
+  name: hub_association
+  bk_columns:
       - column_name: vereinspartnerid
         business_name: association_id
-   name: hub_customer
-    bk_columns:
+  name: hub_customer
+  bk_columns:
       - column_name: kundeid
         business_name: customer_id
-   name: hub_creditcard  
-    bk_columns:
+  name: hub_creditcard  
+  bk_columns:
       - column_name: kreditkarte
         business_name: creditcard_id
       - column_name: kkfirma
