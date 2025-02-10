@@ -1,6 +1,6 @@
 {%- set yaml_metadata -%}
 
-source_model_name: v_webshop_bestellung
+source_model_name: v_webshop_position
 hubs:
   - name: hub_webshoporder
     bk_columns:

@@ -8,7 +8,7 @@ hubs:
         business_name: webshoporder_id
   - name: hub_deliveryaddress
     bk_columns:
-      - column_name: lieferadrid
+      - column_name: allglieferadrid
         business_name: deliveryaddress_id
 transactional_attributes: []
     

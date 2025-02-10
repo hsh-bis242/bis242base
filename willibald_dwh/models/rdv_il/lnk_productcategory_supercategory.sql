@@ -6,8 +6,7 @@ hubs:
     bk_columns:
       - column_name: katid
         business_name: productcategory_id
-{# pseudo hub: this hub does not exist, it is just a referenz on itself -#}
-  - name: hub_supercategory
+  - name: hub_supercategory # pseudo hub: this hub does not exist, it is just a reference on itself
     bk_columns:
       - column_name: oberkatid
         business_name: productcategory_id

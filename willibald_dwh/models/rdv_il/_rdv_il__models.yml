@@ -7,11 +7,81 @@ models:
         data_tests:
           - unique
 
+  - name: hub_creditcard
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - creditcard_number
+            - issuer
+            - validto
+    columns:
+      - name: creditcard_number
+      - name: issuer
+      - name: validto
+
   - name: hub_customer
     columns:
       - name: customer_id
         data_tests:
           - unique
+
+  - name: hub_deliveryaddress
+    columns:
+      - name: deliveryaddress_id
+        data_tests:
+          - unique
+
+  - name: hub_deliveryservice
+    columns:
+      - name: deliveryservice_id
+        data_tests:
+          - unique
+
+  - name: hub_product
+    columns:
+      - name: product_id
+        data_tests:
+          - unique
+
+  - name: hub_productcategory
+    columns:
+      - name: productcategory_id
+        data_tests:
+          - unique
+
+  - name: hub_webshoporder
+    columns:
+      - name: webshoporder_id
+        data_tests:
+          - unique
+
+  - name: hub_webshoporderitem
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - webshoporder_id
+            - orderitem_id
+    columns:
+      - name: webshoporder_id
+      - name: orderitem_id
+
+  - name: lnk_association_contact
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_association
+            - hkey_hub_customer
+    columns:
+      - name: hkey_hub_association
+        data_tests:
+          - relationships:
+              to: ref('hub_association')
+              field: hkey_hub_association
+      - name: hkey_hub_customer
+        data_tests:
+          - relationships:
+              to: ref('hub_customer')
+              field: hkey_hub_customer
 
   - name: lnk_customer_association
     data_tests:
@@ -31,6 +101,25 @@ models:
               to: ref('hub_association')
               field: hkey_hub_association
 
+  - name: lnk_customer_creditcard
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_customer
+            - hkey_hub_creditcard
+    columns:
+      - name: hkey_hub_customer
+        data_tests:
+          - relationships:
+              to: ref('hub_customer')
+              field: hkey_hub_customer
+    columns:
+      - name: hkey_hub_creditcard
+        data_tests:
+          - relationships:
+              to: ref('hub_creditcard')
+              field: hkey_hub_creditcard
+
   - name: lnk_customer_residence
     data_tests:
       - dbt_utils.unique_combination_of_columns:
@@ -43,6 +132,24 @@ models:
           - relationships:
               to: ref('hub_customer')
               field: hkey_hub_customer
+  
+  - name: lnk_product_productcategory
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_product
+            - hkey_hub_productcategory
+    columns:
+      - name: hkey_hub_product
+        data_tests:
+          - relationships:
+              to: ref('hub_product')
+              field: hkey_hub_product
+      - name: hkey_hub_productcategory
+        data_tests:
+          - relationships:
+              to: ref('hub_productcategory')
+              field: hkey_hub_productcategory
 
   - name: lnk_productcategory_supercategory
     data_tests:
@@ -59,8 +166,154 @@ models:
       - name: hkey_hub_supercategory
         data_tests:
           - relationships:
-              to: ref('hkey_hub_supercategory')
-              field: hkey_hkey_hub_supercategory
+              to: ref('hub_productcategory')
+              field: hkey_hub_productcategory
+
+  - name: lnk_roadshowsale
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_product
+            - hkey_hub_association
+            - hkey_hub_customer
+            - hkey_hub_creditcard
+            - roadshowsale_id
+    columns:
+      - name: hkey_hub_product
+        data_tests:
+          - relationships:
+              to: ref('hub_product')
+              field: hkey_hub_product
+      - name: hkey_hub_association
+        data_tests:
+          - relationships:
+              to: ref('hub_association')
+              field: hkey_hub_association
+      - name: hkey_hub_customer
+        data_tests:
+          - relationships:
+              to: ref('hub_customer')
+              field: hkey_hub_customer
+      - name: hkey_hub_creditcard
+        data_tests:
+          - relationships:
+              to: ref('hub_creditcard')
+              field: hkey_hub_creditcard
+
+  - name: lnk_webshoporder_customer
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_webshoporder
+            - hkey_hub_customer
+    columns:
+      - name: hkey_hub_webshoporder
+        data_tests:
+          - relationships:
+              to: ref('hub_webshoporder')
+              field: hkey_hub_webshoporder
+      - name: hkey_hub_customer
+        data_tests:
+          - relationships:
+              to: ref('hub_customer')
+              field: hkey_hub_customer
+
+  - name: lnk_webshoporder_deliveryaddress
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_webshoporder
+            - hkey_hub_deliveryaddress
+    columns:
+      - name: hkey_hub_webshoporder
+        data_tests:
+          - relationships:
+              to: ref('hub_webshoporder')
+              field: hkey_hub_webshoporder
+      - name: hkey_hub_deliveryaddress
+        data_tests:
+          - relationships:
+              to: ref('hub_deliveryaddress')
+              field: hkey_hub_deliveryaddress
+
+  - name: lnk_webshoporder_webshoporderitem
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_webshoporder
+            - hkey_hub_webshoporderitem
+    columns:
+      - name: hkey_hub_webshoporder
+        data_tests:
+          - relationships:
+              to: ref('hub_webshoporder')
+              field: hkey_hub_webshoporder
+      - name: hkey_hub_webshoporderitem
+        data_tests:
+          - relationships:
+              to: ref('hub_webshoporderitem')
+              field: hkey_hub_webshoporderitem
+
+  - name: lnk_webshoporderitem_delivery
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_webshoporderitem
+            - hkey_hub_deliveryaddress
+            - hkey_hub_deliveryservice
+            - deliverydate
+    columns:
+      - name: hkey_hub_webshoporderitem
+        data_tests:
+          - relationships:
+              to: ref('hub_webshoporderitem')
+              field: hkey_hub_webshoporderitem
+      - name: hkey_hub_deliveryaddress
+        data_tests:
+          - relationships:
+              to: ref('hub_deliveryaddress')
+              field: hkey_hub_deliveryaddress
+      - name: hkey_hub_deliveryservice
+        data_tests:
+          - relationships:
+              to: ref('hub_deliveryservice')
+              field: hkey_hub_deliveryservice
+
+  - name: lnk_webshoporderitem_deliveryaddress
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_webshoporderitem
+            - hkey_hub_deliveryaddress
+    columns:
+      - name: hkey_hub_webshoporderitem
+        data_tests:
+          - relationships:
+              to: ref('hub_webshoporderitem')
+              field: hkey_hub_webshoporderitem
+      - name: hkey_hub_deliveryaddress
+        data_tests:
+          - relationships:
+              to: ref('hub_deliveryaddress')
+              field: hkey_hub_deliveryaddress
+
+  - name: lnk_webshoporderitem_product
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_webshoporderitem
+            - hkey_hub_product
+    columns:
+      - name: hkey_hub_webshoporderitem
+        data_tests:
+          - relationships:
+              to: ref('hub_webshoporderitem')
+              field: hkey_hub_webshoporderitem
+      - name: hkey_hub_product
+        data_tests:
+          - relationships:
+              to: ref('hub_product')
+              field: hkey_hub_product
 
   - name: sat_customer_context
     data_tests:
