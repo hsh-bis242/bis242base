@@ -2,11 +2,10 @@
 
 source_model_name: v_webshop_wohnort
 parent_ensemble:
-  name: hub_customer
+  name: lnk_customer_residence
   bk_columns:
     - column_name: kundeid
       business_name: customer_id
-  transactional_attributes:
     - column_name: von
       business_name: validfrom
 context_columns:
