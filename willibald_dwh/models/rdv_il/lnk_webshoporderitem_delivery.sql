@@ -1,6 +1,6 @@
 {%- set yaml_metadata -%}
 
-source_model_name: v_webshop_position
+source_model_name: v_webshop_lieferung
 hubs:
   - name: hub_webshoporderitem
     bk_columns:
@@ -14,7 +14,7 @@ hubs:
         business_name: deliveryaddress_id
   - name: hub_deliveryservice
     bk_columns:
-      - column_name: lieferartid
+      - column_name: lieferdienstid
         business_name: deliveryservice_id
 transactional_attributes:
   - column_name: lieferdatum 
