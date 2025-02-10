@@ -2,29 +2,22 @@
 
 source_model_name: v_roadshow_bestellung
 parent_ensemble:
-  name: hub_product
+  name: lnk_roadshowsale
   bk_columns:
-      - column_name: produktid
-        business_name: product_id
-  name: hub_association
-  bk_columns:
-      - column_name: vereinspartnerid
-        business_name: association_id
-  name: hub_customer
-  bk_columns:
-      - column_name: kundeid
-        business_name: customer_id
-  name: hub_creditcard  
-  bk_columns:
-      - column_name: kreditkarte
-        business_name: creditcard_id
-      - column_name: kkfirma
-        business_name: issuer
-      - column_name: gueltigbis
-        business_name: validto
-transactional_attributes:
-  - column_name: bestellungid 
-    business_name: roadshowsale_id 
+    - column_name: produktid
+      business_name: product_id
+    - column_name: vereinspartnerid
+      business_name: association_id
+    - column_name: kundeid
+      business_name: customer_id
+    - column_name: kreditkarte
+      business_name: creditcard_id
+    - column_name: kkfirma
+      business_name: issuer
+    - column_name: gueltigbis
+      business_name: validto
+    - column_name: bestellungid
+      business_name: roadshowsale_id 
 context_columns:
   - column_name: kaufdatum
     business_name: saledate
