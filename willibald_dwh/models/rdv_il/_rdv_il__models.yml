@@ -7,11 +7,63 @@ models:
         data_tests:
           - unique
 
+  - name: hub_creditcard
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - creditcard_number
+            - issuer
+            - validto
+    columns:
+      - name: creditcard_number
+      - name: issuer
+      - name: validto
+
   - name: hub_customer
     columns:
       - name: customer_id
         data_tests:
           - unique
+
+  - name: hub_deliveryaddress
+    columns:
+      - name: deliveryaddress_id
+        data_tests:
+          - unique
+
+  - name: hub_deliveryservice
+    columns:
+      - name: deliveryservice_id
+        data_tests:
+          - unique
+
+  - name: hub_product
+    columns:
+      - name: product_id
+        data_tests:
+          - unique
+
+  - name: hub_productcategory
+    columns:
+      - name: productcategory_id
+        data_tests:
+          - unique
+
+  - name: hub_webshoporder
+    columns:
+      - name: webshoporder_id
+        data_tests:
+          - unique
+
+  - name: hub_webshoporderitem
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - webshoporder_id
+            - orderitem_id
+    columns:
+      - name: webshoporder_id
+      - name: orderitem_id
 
   - name: lnk_association_contact
     data_tests:
