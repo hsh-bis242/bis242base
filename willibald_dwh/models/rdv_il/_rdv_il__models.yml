@@ -314,6 +314,58 @@ models:
           - relationships:
               to: ref('hub_product')
               field: hkey_hub_product
+            
+  - name: lsat_customer_residence_context
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_lnk_customer_residence
+            - sys_loadingid
+    columns:
+      - name: hkey_lnk_customer_residence
+        data_tests:
+          - relationships:
+              to: ref('lnk_customer_residence')
+              field: hkey_lnk_customer_residence
+    
+  - name: lsat_productcategory_supercategory_dkh
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_lnk_productcategory_supercategory
+            - sys_loadingid
+    columns: 
+      - name: hkey_lnk_productcategory_supercategory
+        data_tests:
+          - relationships:
+              to: ref('lnk_productcategory_supercategory')
+              field: hkey_lnk_productcategory_supercategory
+
+  - name: lsat_roadshowsale_context
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_lnk_roadshowsale
+            - sys_loadingid
+    columns:
+      - name: hkey_lnk_roadshowsale
+        data_tests:
+          - relationships:
+              to: ref('lnk_roadshowsale')
+              field: hkey_lnk_roadshowsale
+
+  - name: sat_association_context
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_association
+            - sys_loadingid
+    columns:
+      - name: hkey_hub_association
+        data_tests:
+          - relationships:
+              to: ref('hub_association')
+              field: hkey_hub_association
 
   - name: sat_customer_context
     data_tests:
@@ -327,16 +379,81 @@ models:
           - relationships:
               to: ref('hub_customer')
               field: hkey_hub_customer
-      
-  - name: lsat_productcategory_supercategory_dkh
+
+  - name: sat_deliveryaddress_context
     data_tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - hkey_lnk_productcategory_supercategory
+            - hkey_hub_deliveryaddress
             - sys_loadingid
-    columns: 
-      - name: hkey_lnk_productcategory_supercategory
+    columns:
+      - name: hkey_hub_deliveryaddress
         data_tests:
           - relationships:
-              to: ref('lnk_productcategory_supercategory')
-              field: hkey_lnk_productcategory_supercategory
+              to: ref('hub_deliveryaddress')
+              field: hkey_hub_deliveryaddress
+
+  - name: sat_deliveryservice_context
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_deliveryservice
+            - sys_loadingid
+    columns:
+      - name: hkey_hub_deliveryservice
+        data_tests:
+          - relationships:
+              to: ref('hub_deliveryservice')
+              field: hkey_hub_deliveryservice
+
+  - name: sat_product_context
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_product
+            - sys_loadingid
+    columns:
+      - name: hkey_hub_product
+        data_tests:
+          - relationships:
+              to: ref('hub_product')
+              field: hkey_hub_product
+
+  - name: sat_productcategory_context
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_productcategory
+            - sys_loadingid
+    columns:
+      - name: hkey_hub_productcategory
+        data_tests:
+          - relationships:
+              to: ref('hub_productcategory')
+              field: hkey_hub_productcategory
+
+  - name: sat_webshoporder_context
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_webshoporder
+            - sys_loadingid
+    columns:
+      - name: hkey_hub_webshoporder
+        data_tests:
+          - relationships:
+              to: ref('hub_webshoporder')
+              field: hkey_hub_webshoporder
+
+  - name: sat_webshoporderitem_context
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_webshoporderitem
+            - sys_loadingid
+    columns:
+      - name: hkey_hub_webshoporderitem
+        data_tests:
+          - relationships:
+              to: ref('hub_webshoporderitem')
+              field: hkey_hub_webshoporderitem

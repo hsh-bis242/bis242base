@@ -2,14 +2,12 @@
 
 source_model_name: v_webshop_position
 parent_ensemble:
-  name: hub_customer
+  name: hub_webshoporderitem
   bk_columns:
     - column_name: bestellungid
       business_name: orderitem_id
     - column_name: posid
       business_name: webshoporder_id
-
-
 context_columns:
   - column_name: menge
     business_name: amount

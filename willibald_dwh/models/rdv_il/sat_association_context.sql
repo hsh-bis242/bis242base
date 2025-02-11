@@ -2,7 +2,7 @@
 
 source_model_name: v_webshop_vereinspartner
 parent_ensemble:
-  name: hub_customer
+  name: hub_association
   bk_columns:
     - column_name: vereinspartnerid
       business_name: association_id
