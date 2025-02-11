@@ -2,7 +2,7 @@
 
 source_model_name: v_webshop_bestellung
 parent_ensemble:
-  name: hub_webshop_order
+  name: hub_webshoporder
   bk_columns:
     - column_name: bestellungid
       business_name: webshoporder_id
