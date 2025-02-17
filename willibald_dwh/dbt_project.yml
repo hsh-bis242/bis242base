@@ -31,6 +31,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   willibald_dwh:
+    stg_il:
+      +schema: stg_il
+      +materialized: table
+
     # Config indicated by + and applies to all files under models/psa_sl/
     psa_sl:
       +schema: psa_sl
@@ -51,3 +55,6 @@ seeds:
 
     psa_sl:
       +schema: psa_sl
+
+vars:
+    "dbt_date:time_zone": "Europe/Berlin"
