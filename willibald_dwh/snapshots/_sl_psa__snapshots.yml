@@ -5,7 +5,7 @@ snapshots:
     relation: ref('stg_calendar_feiertag')
     description:  Persisted data from calendar_holiday staging table.
     config:
-      schema: psa_sl
+      schema: sl_psa
       strategy: check
       unique_key: date
       check_cols: all
@@ -15,7 +15,7 @@ snapshots:
     relation: ref('stg_calendar_ferien')
     description:  Persisted data from calendar_vacation staging table.
     config:
-      schema: psa_sl
+      schema: sl_psa
       strategy: check
       unique_key: [start, statecode]
       check_cols: all
