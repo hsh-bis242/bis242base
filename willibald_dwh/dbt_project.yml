@@ -51,6 +51,9 @@ seeds:
         +column_types:
           loadingts: timestamp
 
+    il_rdv:
+      +schema: il_rdv
+
     sl_psa:
       +schema: sl_psa
 

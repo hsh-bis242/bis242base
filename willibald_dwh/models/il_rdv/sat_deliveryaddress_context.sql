@@ -14,7 +14,7 @@ context_columns:
   - column_name: adresszusatz
     business_name: addresssupplement
   - column_name: plz
-    business_name: postcalcode
+    business_name: postalcode
   - column_name: ort
     business_name: city
   - column_name: land
