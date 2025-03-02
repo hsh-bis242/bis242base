@@ -457,3 +457,6 @@ models:
           - relationships:
               to: ref('hub_webshoporderitem')
               field: hkey_hub_webshoporderitem
+
+  - name: ref_dateholiday_wide
+    description: Wide table with holiday information. Just for unhistorize the psa table. Will get unpivoted in ref_dateholiday
