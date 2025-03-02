@@ -31,6 +31,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   willibald_dwh:
+    il_bdv:
+      +schema: il_bdv
+
     il_rdv:
       +schema: il_rdv
 

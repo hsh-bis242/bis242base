@@ -113,7 +113,24 @@ models:
           - relationships:
               to: ref('hub_customer')
               field: hkey_hub_customer
+      - name: hkey_hub_creditcard
+        data_tests:
+          - relationships:
+              to: ref('hub_creditcard')
+              field: hkey_hub_creditcard
+
+  - name: lnk_roadshowcustomer_creditcard
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_customer
+            - hkey_hub_creditcard
     columns:
+      - name: hkey_hub_customer
+        data_tests:
+          - relationships:
+              to: ref('hub_customer')
+              field: hkey_hub_customer
       - name: hkey_hub_creditcard
         data_tests:
           - relationships:
