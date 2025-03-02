@@ -36,6 +36,7 @@ models:
 
     ol_dm:
       +schema: ol_dm
+      +materialized: table
 
     sl_psa:
       +schema: sl_psa

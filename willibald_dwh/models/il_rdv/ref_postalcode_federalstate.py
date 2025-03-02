@@ -3,7 +3,7 @@ import requests
 
 def model(dbt, session):
 
-    postalcodes = dbt.ref("ref_uniquepostalcodes").to_df()
+    postalcodes = dbt.ref("ref_uniquepostalcode").to_df()
 
     # iterate through all postal codes in the list and get the federal state
     postalcodes["federal_state_key"] = postalcodes["postalcode"].apply(lambda x: get_federal_state_key(str(x)))
