@@ -1,24 +1,30 @@
 {%- set yaml_metadata -%}
 
-source_model_name: v_webshop_lieferadresse
+source_model_name: v_webshop_lieferdienst
 parent_ensemble:
-  name: hub_deliveryaddress
+  name: hub_deliveryservice
   bk_columns:
-    - column_name: lieferadrid
-      business_name: dliveryaddress_id
+    - column_name: lieferdienstid
+      business_name: deliveryservice_id
 context_columns:
+  - column_name: name
+    business_name: name
+  - column_name: telefon
+    business_name: phonenumber
+  - column_name: fax
+    business_name: faxnumber
+  - column_name: email
+    business_name: emailaddress
   - column_name: strasse
     business_name: street
   - column_name: hausnummer
     business_name: housenumber
-  - column_name: adresszusatz
-    business_name: addresssupplement
   - column_name: plz
-    business_name: postcalcode
+    business_name: postalcode
   - column_name: ort
     business_name: city
   - column_name: land
-    business_name: country
+    business_name: country  
 
 {%- endset -%}
 

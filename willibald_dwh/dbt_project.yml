@@ -31,23 +31,35 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   willibald_dwh:
-    # Config indicated by + and applies to all files under models/psa_sl/
-    psa_sl:
-      +schema: psa_sl
+    il_rdv:
+      +schema: il_rdv
 
-    rdv_il:
-      +schema: rdv_il
+    ol_dm:
+      +schema: ol_dm
+      +materialized: table
+
+    sl_psa:
+      +schema: sl_psa
+
+    sl_stg:
+      +schema: sl_stg
+      +materialized: table
 
 seeds:
   willibald_dwh:
     +enabled: true
     
-    # This configures seeds/meta_cl/*.csv
-    meta_cl:
-      +schema: meta_cl
+    cl_meta:
+      +schema: cl_meta
       loading_history:
         +column_types:
           loadingts: timestamp
 
-    psa_sl:
-      +schema: psa_sl
+    il_rdv:
+      +schema: il_rdv
+
+    sl_psa:
+      +schema: sl_psa
+
+vars:
+    "dbt_date:time_zone": "Europe/Berlin"

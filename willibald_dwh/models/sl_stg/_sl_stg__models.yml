@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: stg_calendar_feiertag
+    columns:
+      - name: date
+        data_type: date
+      - name: fname
+        data_type: varchar
+      - name: all_states
+        data_type: boolean
+      - name: bw
+        data_type: boolean
+      - name: by
+        data_type: boolean
+      - name: be
+        data_type: boolean
+      - name: bb
+        data_type: boolean
+      - name: hb
+        data_type: boolean
+      - name: hh
+        data_type: boolean
+      - name: he
+        data_type: boolean
+      - name: mv
+        data_type: boolean
+      - name: ni
+        data_type: boolean
+      - name: nw
+        data_type: boolean
+      - name: rp
+        data_type: boolean
+      - name: sl
+        data_type: boolean
+      - name: sn
+        data_type: boolean
+      - name: st
+        data_type: boolean
+      - name: sh
+        data_type: boolean
+      - name: th
+        data_type: boolean
+      - name: comment
+        data_type: varchar
+      - name: augsburg
+        data_type: boolean
+      - name: katholisch
+        data_type: boolean

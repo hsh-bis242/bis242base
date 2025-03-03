@@ -19,7 +19,7 @@ staging scheme, which persists as seeds within this repository. Every line of th
 
 From this point on all the data vault loading is implemented as proposed by [Roelant Vos](https://www.roelantvos.com/). The pattern are kept as simple as possible, for your convenience.
 
-A first loading step is to calculate a current value flag in a view on the persisted staging tables. Therefore a macro "psa_view" is created, which depends on a new meta attribute called unique_key attached to the psa seed tables (you can see the definitions within psa_sl_properties.yml).
+A first loading step is to calculate a current value flag in a view on the persisted staging tables. Therefore a macro "psa_view" is created, which depends on a new meta attribute called unique_key attached to the psa seed tables (you can see the definitions within sl_psa__properties.yml).
 
 ### How is the data vault of this project implemented?
 

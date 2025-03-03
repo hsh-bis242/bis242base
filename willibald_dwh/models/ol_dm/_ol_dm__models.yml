@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: dim_date
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - federalstate_key

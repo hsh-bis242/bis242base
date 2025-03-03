@@ -5,7 +5,7 @@
 {% if execute %}
 
   {% set v_psa_table_node = graph.nodes.values()
-     | selectattr("resource_type", "equalto", "seed")
+     | selectattr("resource_type", "in", ["seed", "model"])
      | selectattr("name", "equalto", p_psa_table)
      | first %}
 

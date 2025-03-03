@@ -1,0 +1,22 @@
+version: 2
+
+snapshots:
+  - name: calendar_feiertag
+    relation: ref('stg_calendar_feiertag')
+    description:  Persisted data from calendar_holiday staging table.
+    config:
+      schema: sl_psa
+      strategy: check
+      unique_key: date
+      check_cols: all
+      hard_deletes: invalidate
+
+  - name: calendar_ferien
+    relation: ref('stg_calendar_ferien')
+    description:  Persisted data from calendar_vacation staging table.
+    config:
+      schema: sl_psa
+      strategy: check
+      unique_key: [start, statecode]
+      check_cols: all
+      hard_deletes: invalidate
