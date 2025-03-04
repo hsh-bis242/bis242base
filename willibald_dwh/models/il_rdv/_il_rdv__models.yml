@@ -113,7 +113,6 @@ models:
           - relationships:
               to: ref('hub_customer')
               field: hkey_hub_customer
-    columns:
       - name: hkey_hub_creditcard
         data_tests:
           - relationships:
