@@ -33,6 +33,7 @@ models:
   willibald_dwh:
     il_bdv:
       +schema: il_bdv
+      +materialized: table
 
     il_rdv:
       +schema: il_rdv

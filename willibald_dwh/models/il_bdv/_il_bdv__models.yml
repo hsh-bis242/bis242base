@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: brdg_orderitem_consolidated
+    description: This model consolidates roadshow and webshop orderitems.
+
+  - name: brdg_orderitem_roadshow
+    description: This model organizes the orderitems for roadshow orders and joins customer, product and order data.  
+    data-tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - sys_loadingid
+            - hkey_lnk_roadshowsale
+    config:
+      materialized: view
+
+  - name: brdg_orderitem_webshop
+    description: This model organizes the orderitems for webshop orders and joins customer, product and order data.
+    config:
+      materialized: ephemeral
