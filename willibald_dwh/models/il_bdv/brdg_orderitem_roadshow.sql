@@ -1,14 +1,3 @@
-WITH cte_lnk_cust_cc AS
-(
-SELECT  lnk_cust_cc.hkey_hub_creditcard,
-        lnk_cust_cc.hkey_hub_customer,
-        lnk_cust_cc.hkey_lnk_customer_creditcard,
-        dklsat_cust_cc.sys_loadingid,
-        dklsat_cust_cc.sys_loadingid_validto
-  FROM  {{ ref("lnk_customer_creditcard") }} lnk_cust_cc
-  JOIN  {{ ref("lsat_customer_creditcard_dkh") }} dklsat_cust_cc
-    ON  dklsat_cust_cc.hkey_lnk_customer_creditcard = lnk_cust_cc.hkey_lnk_customer_creditcard
-)
 SELECT      lh.loadingts AS sys_loadingts,
             lh.loadingid AS sys_loadingid,
             sat_rs_context.hkey_lnk_roadshowsale,
@@ -21,14 +10,10 @@ SELECT      lh.loadingts AS sys_loadingts,
     ON      lh.loadingid <= sat_rs_context.sys_loadingid
   JOIN      {{ ref("lnk_roadshowsale") }}	lnk_rs
     ON      lnk_rs.hkey_lnk_roadshowsale = sat_rs_context.hkey_lnk_roadshowsale
-  LEFT JOIN	cte_lnk_cust_cc lnk_cust_cc
-    ON		  lnk_cust_cc.hkey_hub_creditcard = lnk_rs.hkey_hub_creditcard
-   AND      IFNULL(lnk_cust_cc.sys_loadingid_validto, 2^31 - 1) > lh.loadingid
-   AND      lnk_cust_cc.sys_loadingid <= lh.loadingid
+  LEFT JOIN	{{ effective_link("customer_creditcard", "lnk_rs", "hkey_hub_creditcard", "lh.loadingid") }}
   LEFT JOIN	{{ ref("hub_customer") }} hub_cc_cust
-    ON		  hub_cc_cust.hkey_hub_customer  = lnk_cust_cc.hkey_hub_customer
+    ON		  hub_cc_cust.hkey_hub_customer  = customer_creditcard.hkey_hub_customer
   LEFT JOIN	{{ ref("hub_customer") }} hub_cust
     ON		  hub_cust.hkey_hub_customer = lnk_rs.hkey_hub_customer
   JOIN      {{ ref("hub_product") }} hub_prdct
     ON      hub_prdct.hkey_hub_product = lnk_rs.hkey_hub_product
-  JOIN      {{ ref("hub_roadshow") }} hub_rs  
