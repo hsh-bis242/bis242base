@@ -358,6 +358,19 @@ models:
               to: ref('lnk_productcategory_supercategory')
               field: hkey_lnk_productcategory_supercategory
 
+  - name: lsat_customer_creditcard_dkh
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_lnk_customer_creditcard
+            - sys_loadingid
+    columns:
+      - name: hkey_lnk_customer_creditcard
+        data_tests:
+          - relationships:
+              to: ref('lnk_customer_creditcard')
+              field: hkey_lnk_customer_creditcard
+
   - name: lsat_roadshowsale_context
     data_tests:
       - dbt_utils.unique_combination_of_columns:

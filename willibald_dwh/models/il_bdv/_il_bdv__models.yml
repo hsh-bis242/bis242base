@@ -6,7 +6,7 @@ models:
 
   - name: brdg_orderitem_roadshow
     description: This model organizes the orderitems for roadshow orders and joins customer, product and order data.  
-    data-tests:
+    data_tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
             - sys_loadingid
@@ -16,5 +16,10 @@ models:
 
   - name: brdg_orderitem_webshop
     description: This model organizes the orderitems for webshop orders and joins customer, product and order data.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - sys_loadingid
+            - hkey_hub_webshoporderitem
     config:
-      materialized: ephemeral
+      materialized: view
