@@ -338,6 +338,8 @@ models:
           combination_of_columns:
             - hkey_lnk_customer_residence
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_lnk_customer_residence
         data_tests:
@@ -351,6 +353,8 @@ models:
           combination_of_columns:
             - hkey_lnk_productcategory_supercategory
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns: 
       - name: hkey_lnk_productcategory_supercategory
         data_tests:
@@ -364,6 +368,8 @@ models:
           combination_of_columns:
             - hkey_lnk_customer_creditcard
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_lnk_customer_creditcard
         data_tests:
@@ -377,6 +383,8 @@ models:
           combination_of_columns:
             - hkey_lnk_roadshowsale
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_lnk_roadshowsale
         data_tests:
@@ -390,6 +398,8 @@ models:
           combination_of_columns:
             - hkey_hub_association
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_hub_association
         data_tests:
@@ -403,6 +413,8 @@ models:
           combination_of_columns:
             - hkey_hub_customer
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_hub_customer
         data_tests:
@@ -416,6 +428,8 @@ models:
           combination_of_columns:
             - hkey_hub_deliveryaddress
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_hub_deliveryaddress
         data_tests:
@@ -429,6 +443,8 @@ models:
           combination_of_columns:
             - hkey_hub_deliveryservice
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_hub_deliveryservice
         data_tests:
@@ -442,6 +458,8 @@ models:
           combination_of_columns:
             - hkey_hub_product
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_hub_product
         data_tests:
@@ -455,6 +473,8 @@ models:
           combination_of_columns:
             - hkey_hub_productcategory
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_hub_productcategory
         data_tests:
@@ -468,6 +488,8 @@ models:
           combination_of_columns:
             - hkey_hub_webshoporder
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_hub_webshoporder
         data_tests:
@@ -481,6 +503,8 @@ models:
           combination_of_columns:
             - hkey_hub_webshoporderitem
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_hub_webshoporderitem
         data_tests:
