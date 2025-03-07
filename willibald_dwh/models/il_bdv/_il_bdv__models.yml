@@ -1,8 +1,6 @@
 version: 2
 
 models:
-  - name: brdg_orderitem_consolidated
-    description: This model consolidates roadshow and webshop orderitems.
 
   - name: brdg_orderitem_roadshow
     description: This model organizes the orderitems for roadshow orders and joins customer, product and order data.  
@@ -12,7 +10,7 @@ models:
             - sys_loadingid
             - hkey_lnk_roadshowsale
     config:
-      materialized: view
+      materialized: table
 
   - name: brdg_orderitem_webshop
     description: This model organizes the orderitems for webshop orders and joins customer, product and order data.
@@ -22,4 +20,4 @@ models:
             - sys_loadingid
             - hkey_hub_webshoporderitem
     config:
-      materialized: view
+      materialized: table
