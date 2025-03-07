@@ -1,0 +1,7 @@
+version: 2
+seeds:
+  - name: loading_history
+    description: This seed contains the loading history of the data warehouse.
+    columns:
+      - name: loadingid
+      - name: loadingts

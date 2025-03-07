@@ -11,6 +11,8 @@ keys:
     is_driving_key: false
   - name: lieferdienstid
     is_driving_key: false
+  - name: lieferdatum
+    is_driving_key: false
 
 {%- endset -%}
 
