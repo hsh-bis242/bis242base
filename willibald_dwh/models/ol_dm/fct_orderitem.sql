@@ -1,1 +1,0 @@
--- Customer mit Dummy-Customer "Roadshow" erstellen
