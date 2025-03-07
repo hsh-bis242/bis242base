@@ -27,7 +27,7 @@ cte_sat_format AS (
 QUALIFY COALESCE(LAG(sys_checksum) OVER (PARTITION BY {{ "hkey_" + parent_ensemble.name }} ORDER BY sys_loadingid), '') <> sys_checksum
 )
 SELECT  *,
-        LEAD(sys_loadingid) OVER (PARTITION BY {{ "hkey_" + parent_ensemble.name }} ORDER BY sys_loadingid) AS sys_loadingid_validto
+        LEAD(sys_loadingid, 1, 2^31 - 1) OVER (PARTITION BY {{ "hkey_" + parent_ensemble.name }} ORDER BY sys_loadingid) AS sys_loadingid_validto
   FROM  cte_sat_format
 
 {%- endmacro -%}
