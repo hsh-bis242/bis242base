@@ -1,6 +1,6 @@
 SELECT  lh.loadingid AS sys_loadingid,
         sat_wsoi.hkey_hub_webshoporderitem,
-        webshoporder_webshoporderitem.hkey_hub_webshoporder,
+        webshoporderitem_webshoporder.hkey_hub_webshoporder,
         webshoporderitem_product.hkey_hub_product,
         product_productcategory.hkey_hub_productcategory,
         productcategory_supercategory.hkey_hub_supercategory,
@@ -20,16 +20,16 @@ SELECT  lh.loadingid AS sys_loadingid,
   JOIN  {{ effective_link("productcategory_supercategory", "product_productcategory", "hkey_hub_productcategory", "lh.loadingid") }}
 
   -- webshoporder
-  JOIN  {{ effective_link("webshoporder_webshoporderitem", "sat_wsoi", "hkey_hub_webshoporderitem", "lh.loadingid") }}
+  JOIN  {{ effective_link("webshoporderitem_webshoporder", "sat_wsoi", "hkey_hub_webshoporderitem", "lh.loadingid") }}
   
   -- deliveryaddress
-  JOIN  {{ effective_link("webshoporder_deliveryaddress", "webshoporder_webshoporderitem", "hkey_hub_webshoporder", "lh.loadingid") }}
+  JOIN  {{ effective_link("webshoporder_deliveryaddress", "webshoporderitem_webshoporder", "hkey_hub_webshoporder", "lh.loadingid") }}
   JOIN  {{ effective_link("webshoporderitem_deliveryaddress", "sat_wsoi", "hkey_hub_webshoporderitem", "lh.loadingid") }}
   JOIN  {{ ref("hub_deliveryaddress") }} hub_dlvryaddrss
     ON  hub_dlvryaddrss.hkey_hub_deliveryaddress = webshoporderitem_deliveryaddress.hkey_hub_deliveryaddress
 
   -- customer
-  JOIN  {{ effective_link("webshoporder_customer", "webshoporder_webshoporderitem", "hkey_hub_webshoporder", "lh.loadingid") }}
+  JOIN  {{ effective_link("webshoporder_customer", "webshoporderitem_webshoporder", "hkey_hub_webshoporder", "lh.loadingid") }}
   JOIN  {{ effective_link("customer_association", "webshoporder_customer", "hkey_hub_customer", "lh.loadingid") }}
 
   -- delivery

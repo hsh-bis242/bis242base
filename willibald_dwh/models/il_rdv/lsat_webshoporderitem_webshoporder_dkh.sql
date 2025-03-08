@@ -1,14 +1,14 @@
 {%- set yaml_metadata -%}
 
 source_model_name: v_webshop_position
-parent_link_name: lnk_webshoporder_webshoporderitem
+parent_link_name: lnk_webshoporderitem_webshoporder
 keys:
   - name: bestellungid
-    is_driving_key: true
-  - name: bestellungid
-    is_driving_key: false    
+    is_driving_key: true    
   - name: posid
-    is_driving_key: false  
+    is_driving_key: true 
+  - name: bestellungid
+    is_driving_key: false
 {%- endset -%}
 
 {%- set metadata_dict = fromyaml(yaml_metadata) -%}

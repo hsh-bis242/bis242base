@@ -1,11 +1,11 @@
 {%- set yaml_metadata -%}
 
-source_model_name: v_webshop_kunde
+source_model_name: v_webshop_vereinspartner
 parent_link_name: lnk_association_contact
 keys:
   - name: vereinspartnerid
     is_driving_key: true
-  - name: kundeid
+  - name: kundeidverein
     is_driving_key: false   
 
 {%- endset -%}
