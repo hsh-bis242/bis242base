@@ -1,6 +1,6 @@
 {%- set yaml_metadata -%}
 
-source_model_name: v_webshop_kunde
+source_model_name: v_webshop_vereinspartner
 hubs:
   - name: hub_association
     bk_columns:
@@ -8,7 +8,7 @@ hubs:
         business_name: association_id
   - name: hub_customer
     bk_columns:
-      - column_name: kundeid
+      - column_name: kundeidverein
         business_name: customer_id
 transactional_attributes: []
     

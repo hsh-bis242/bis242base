@@ -253,23 +253,23 @@ models:
               to: ref('hub_deliveryaddress')
               field: hkey_hub_deliveryaddress
 
-  - name: lnk_webshoporder_webshoporderitem
+  - name: lnk_webshoporderitem_webshoporder
     data_tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - hkey_hub_webshoporder
             - hkey_hub_webshoporderitem
+            - hkey_hub_webshoporder
     columns:
-      - name: hkey_hub_webshoporder
-        data_tests:
-          - relationships:
-              to: ref('hub_webshoporder')
-              field: hkey_hub_webshoporder
       - name: hkey_hub_webshoporderitem
         data_tests:
           - relationships:
               to: ref('hub_webshoporderitem')
               field: hkey_hub_webshoporderitem
+      - name: hkey_hub_webshoporder
+        data_tests:
+          - relationships:
+              to: ref('hub_webshoporder')
+              field: hkey_hub_webshoporder
 
   - name: lnk_webshoporderitem_delivery
     data_tests:
@@ -590,20 +590,20 @@ models:
               to: ref('lnk_webshoporder_deliveryaddress')
               field: hkey_lnk_webshoporder_deliveryaddress
 
-  - name: lsat_webshoporder_webshoporderitem_dkh
+  - name: lsat_webshoporderitem_webshoporder_dkh
     data_tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - hkey_lnk_webshoporder_webshoporderitem
+            - hkey_lnk_webshoporderitem_webshoporder
             - sys_loadingid
       - dbt_utils.expression_is_true:
           expression: "sys_loadingid < sys_loadingid_validto"
     columns:
-      - name: hkey_lnk_webshoporder_webshoporderitem
+      - name: hkey_lnk_webshoporderitem_webshoporder
         data_tests:
           - relationships:
-              to: ref('lnk_webshoporder_webshoporderitem')
-              field: hkey_lnk_webshoporder_webshoporderitem
+              to: ref('lnk_webshoporderitem_webshoporder')
+              field: hkey_lnk_webshoporderitem_webshoporder
 
   - name: lsat_webshoporderitem_delivery_dkh
     columns:
