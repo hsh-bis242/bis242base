@@ -113,7 +113,6 @@ models:
           - relationships:
               to: ref('hub_customer')
               field: hkey_hub_customer
-    columns:
       - name: hkey_hub_creditcard
         data_tests:
           - relationships:
@@ -132,7 +131,7 @@ models:
           - relationships:
               to: ref('hub_customer')
               field: hkey_hub_customer
-  
+
   - name: lnk_product_productcategory
     data_tests:
       - dbt_utils.unique_combination_of_columns:
@@ -168,6 +167,24 @@ models:
           - relationships:
               to: ref('hub_productcategory')
               field: hkey_hub_productcategory
+
+  - name: lnk_roadshowcustomer_creditcard
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_hub_customer
+            - hkey_hub_creditcard
+    columns:
+      - name: hkey_hub_customer
+        data_tests:
+          - relationships:
+              to: ref('hub_customer')
+              field: hkey_hub_customer
+      - name: hkey_hub_creditcard
+        data_tests:
+          - relationships:
+              to: ref('hub_creditcard')
+              field: hkey_hub_creditcard
 
   - name: lnk_roadshowsale
     data_tests:
@@ -236,23 +253,23 @@ models:
               to: ref('hub_deliveryaddress')
               field: hkey_hub_deliveryaddress
 
-  - name: lnk_webshoporder_webshoporderitem
+  - name: lnk_webshoporderitem_webshoporder
     data_tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
-            - hkey_hub_webshoporder
             - hkey_hub_webshoporderitem
+            - hkey_hub_webshoporder
     columns:
-      - name: hkey_hub_webshoporder
-        data_tests:
-          - relationships:
-              to: ref('hub_webshoporder')
-              field: hkey_hub_webshoporder
       - name: hkey_hub_webshoporderitem
         data_tests:
           - relationships:
               to: ref('hub_webshoporderitem')
               field: hkey_hub_webshoporderitem
+      - name: hkey_hub_webshoporder
+        data_tests:
+          - relationships:
+              to: ref('hub_webshoporder')
+              field: hkey_hub_webshoporder
 
   - name: lnk_webshoporderitem_delivery
     data_tests:
@@ -314,32 +331,21 @@ models:
           - relationships:
               to: ref('hub_product')
               field: hkey_hub_product
-            
+
   - name: lsat_customer_residence_context
     data_tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
             - hkey_lnk_customer_residence
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_lnk_customer_residence
         data_tests:
           - relationships:
               to: ref('lnk_customer_residence')
               field: hkey_lnk_customer_residence
-    
-  - name: lsat_productcategory_supercategory_dkh
-    data_tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - hkey_lnk_productcategory_supercategory
-            - sys_loadingid
-    columns: 
-      - name: hkey_lnk_productcategory_supercategory
-        data_tests:
-          - relationships:
-              to: ref('lnk_productcategory_supercategory')
-              field: hkey_lnk_productcategory_supercategory
 
   - name: lsat_roadshowsale_context
     data_tests:
@@ -347,12 +353,31 @@ models:
           combination_of_columns:
             - hkey_lnk_roadshowsale
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_lnk_roadshowsale
         data_tests:
           - relationships:
               to: ref('lnk_roadshowsale')
               field: hkey_lnk_roadshowsale
+        data_type: varchar
+      - name: sys_loadingid
+        data_type: integer
+      - name: sys_cdc
+        data_type: varchar
+      - name: sys_checksum
+        data_type: varchar
+      - name: saledate
+        data_type: date
+      - name: quantity
+        data_type: integer
+      - name: amount
+        data_type: double
+      - name: discount
+        data_type: double
+      - name: sys_loadingid_validto
+        data_type: integer
 
   - name: sat_association_context
     data_tests:
@@ -360,6 +385,8 @@ models:
           combination_of_columns:
             - hkey_hub_association
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_hub_association
         data_tests:
@@ -373,6 +400,8 @@ models:
           combination_of_columns:
             - hkey_hub_customer
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_hub_customer
         data_tests:
@@ -386,6 +415,8 @@ models:
           combination_of_columns:
             - hkey_hub_deliveryaddress
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_hub_deliveryaddress
         data_tests:
@@ -399,6 +430,8 @@ models:
           combination_of_columns:
             - hkey_hub_deliveryservice
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_hub_deliveryservice
         data_tests:
@@ -412,6 +445,8 @@ models:
           combination_of_columns:
             - hkey_hub_product
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_hub_product
         data_tests:
@@ -425,6 +460,8 @@ models:
           combination_of_columns:
             - hkey_hub_productcategory
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_hub_productcategory
         data_tests:
@@ -438,6 +475,8 @@ models:
           combination_of_columns:
             - hkey_hub_webshoporder
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_hub_webshoporder
         data_tests:
@@ -451,6 +490,8 @@ models:
           combination_of_columns:
             - hkey_hub_webshoporderitem
             - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
     columns:
       - name: hkey_hub_webshoporderitem
         data_tests:
@@ -460,3 +501,166 @@ models:
 
   - name: ref_dateholiday_wide
     description: Wide table with holiday information. Just for unhistorize the psa table. Will get unpivoted in ref_dateholiday
+
+  - name: lsat_association_contact_dkh
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_lnk_association_contact
+            - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
+    columns:
+      - name: hkey_lnk_association_contact
+        data_tests:
+          - relationships:
+              to: ref('lnk_association_contact')
+              field: hkey_lnk_association_contact
+
+  - name: lsat_customer_association_dkh
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_lnk_customer_association
+            - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
+    columns:
+      - name: hkey_lnk_customer_association
+        data_tests:
+          - relationships:
+              to: ref('lnk_customer_association')
+              field: hkey_lnk_customer_association
+
+  - name: lsat_customer_creditcard_dkh
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_lnk_customer_creditcard
+            - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
+    columns:
+      - name: hkey_lnk_customer_creditcard
+        data_tests:
+          - relationships:
+              to: ref('lnk_customer_creditcard')
+              field: hkey_lnk_customer_creditcard
+
+  - name: lsat_product__productcategory_dkh
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_lnk_product_productcategory
+            - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
+    columns:
+      - name: hkey_lnk_product_productcategory
+        data_tests:
+          - relationships:
+              to: ref('lnk_product_productcategory')
+              field: hkey_lnk_product_productcategory
+
+  - name: lsat_productcategory_supercategory_dkh
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_lnk_productcategory_supercategory
+            - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
+    columns:
+      - name: hkey_lnk_productcategory_supercategory
+        data_tests:
+          - relationships:
+              to: ref('lnk_productcategory_supercategory')
+              field: hkey_lnk_productcategory_supercategory
+
+  - name: lsat_webshoporder_customer_dkh
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_lnk_webshoporder_customer
+            - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
+    columns:
+      - name: hkey_lnk_webshoporder_customer
+        data_tests:
+          - relationships:
+              to: ref('lnk_webshoporder_customer')
+              field: hkey_lnk_webshoporder_customer
+
+  - name: lsat_webshoporder_deliveryaddress_dkh
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_lnk_webshoporder_deliveryaddress
+            - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
+    columns:
+      - name: hkey_lnk_webshoporder_deliveryaddress
+        data_tests:
+          - relationships:
+              to: ref('lnk_webshoporder_deliveryaddress')
+              field: hkey_lnk_webshoporder_deliveryaddress
+
+  - name: lsat_webshoporderitem_webshoporder_dkh
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_lnk_webshoporderitem_webshoporder
+            - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
+    columns:
+      - name: hkey_lnk_webshoporderitem_webshoporder
+        data_tests:
+          - relationships:
+              to: ref('lnk_webshoporderitem_webshoporder')
+              field: hkey_lnk_webshoporderitem_webshoporder
+
+  - name: lsat_webshoporderitem_delivery_dkh
+    columns:
+      - name: hkey_lnk_webshoporderitem_delivery
+        data_type: varchar
+        data_tests:
+          - relationships:
+              field: hkey_lnk_webshoporderitem_delivery
+              to: ref('lnk_webshoporderitem_delivery')
+      - name: sys_loadingid
+        data_type: integer
+      - name: sys_loadingid_validto
+        data_type: integer
+
+  - name: lsat_webshoporderitem_deliveryaddress_dkh
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_lnk_webshoporderitem_deliveryaddress
+            - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
+    columns:
+      - name: hkey_lnk_webshoporderitem_deliveryaddress
+        data_tests:
+          - relationships:
+              to: ref('lnk_webshoporderitem_deliveryaddress')
+              field: hkey_lnk_webshoporderitem_deliveryaddress
+
+  - name: lsat_webshoporderitem_product_dkh
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - hkey_lnk_webshoporderitem_product
+            - sys_loadingid
+      - dbt_utils.expression_is_true:
+          expression: "sys_loadingid < sys_loadingid_validto"
+    columns:
+      - name: hkey_lnk_webshoporderitem_product
+        data_tests:
+          - relationships:
+              to: ref('lnk_webshoporderitem_product')
+              field: hkey_lnk_webshoporderitem_product

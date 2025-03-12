@@ -1,3 +1,5 @@
 logs/
 *.duckdb
 *.duckdb.wal
+
+.venv

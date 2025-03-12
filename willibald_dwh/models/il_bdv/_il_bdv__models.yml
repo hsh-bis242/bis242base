@@ -1,0 +1,110 @@
+version: 2
+
+models:
+
+  - name: brdg_orderitem_roadshow
+    description: This model organizes the orderitems for roadshow orders and joins customer, product and order data.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - sys_loadingid
+            - hkey_lnk_roadshowsale
+    config:
+      materialized: table
+    columns:
+      - name: sys_loadingid
+        data_type: integer
+      - name: hkey_lnk_roadshowsale
+        data_type: varchar
+      - name: hkey_hub_association
+        data_type: varchar
+      - name: hkey_hub_customer
+        data_type: varchar
+      - name: hkey_hub_product
+        data_type: varchar
+      - name: hkey_hub_productcategory
+        data_type: varchar
+      - name: hkey_hub_supercategory
+        data_type: varchar
+
+  - name: brdg_orderitem_webshop
+    description: This model organizes the orderitems for webshop orders and joins customer, product and order data.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - sys_loadingid
+            - hkey_hub_webshoporderitem
+    config:
+      materialized: table
+
+  - name: csat_roadshowsale_kpi
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - sys_loadingid
+            - hkey_lnk_roadshowsale
+    columns:
+      - name: sys_loadingid
+        data_type: integer
+      - name: hkey_lnk_roadshowsale
+        data_type: varchar
+        data_tests:
+          - relationships:
+              field: hkey_lnk_roadshowsale
+              to: ref('lnk_roadshowsale')
+      - name: quantity
+        data_type: integer
+      - name: amount
+        data_type: double
+      - name: discount
+        data_type: double
+      - name: is_completely_delivered
+        data_type: boolean
+      - name: orderdate
+        data_type: date
+        data_tests:
+          - not_null
+      - name: requesteddate
+        data_type: date
+        data_tests:
+          - not_null
+      - name: deliverydate
+        data_type: date
+        data_tests:
+          - not_null
+
+  - name: csat_webshoporderitem_kpi
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - sys_loadingid
+            - hkey_hub_webshoporderitem
+    columns:
+      - name: hkey_hub_webshoporderitem
+        data_type: varchar
+        data_tests:
+          - relationships:
+              field: hkey_hub_webshoporderitem
+              to: ref('hub_webshoporderitem')
+      - name: sys_loadingid
+        data_type: integer
+      - name: quantity
+        data_type: integer
+      - name: amount
+        data_type: double
+      - name: discount
+        data_type: double
+      - name: is_completely_delivered
+        data_type: boolean
+      - name: orderdate
+        data_type: date
+        data_tests:
+          - not_null
+      - name: requesteddate
+        data_type: date
+        data_tests:
+          - not_null
+      - name: deliverydate
+        data_type: date
+        data_tests:
+          - not_null
