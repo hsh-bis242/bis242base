@@ -1,8 +1,7 @@
 {% macro effective_link(link_name, hkey_ref_table_name, hkey_ref_column_name, loadingid_ref_fullpath) -%}
 
 (
-    SELECT  lnk.{{ "hkey_lnk_" + link_name }},
-            {{ dbt_utils.star(ref("lnk_" + link_name), except=["hkey_lnk_" + link_name, "sys_loadingid", "sys_rsrc"]) }},
+    SELECT  {{ dbt_utils.star(ref("lnk_" + link_name), except=["sys_loadingid", "sys_rsrc"], relation_alias="lnk") }},
             dklsat.sys_loadingid,
             dklsat.sys_loadingid_validto
       FROM  {{ ref("lnk_" + link_name) }} lnk
