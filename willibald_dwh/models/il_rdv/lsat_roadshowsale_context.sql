@@ -22,9 +22,9 @@ context_columns:
   - column_name: kaufdatum
     business_name: saledate
   - column_name: menge
-    business_name: amount
+    business_name: quantity
   - column_name: preis
-    business_name: price
+    business_name: amount
   - column_name: rabatt
     business_name: discount
 

@@ -10,9 +10,9 @@ parent_ensemble:
       business_name: webshoporder_id
 context_columns:
   - column_name: menge
-    business_name: amount
+    business_name: quantity
   - column_name: preis
-    business_name: price
+    business_name: amount
 
 
 {%- endset -%}

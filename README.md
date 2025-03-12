@@ -17,4 +17,5 @@ dbt run
 ```
 
 # Data model
-![willibald_datavault](https://github.com/user-attachments/assets/5bcb9526-440c-4e30-8e03-c716ca217949)
+![willibald_datavault](https://github.com/user-attachments/assets/2c02a9f3-c231-41f9-8ae1-5c309766c5a6)
+

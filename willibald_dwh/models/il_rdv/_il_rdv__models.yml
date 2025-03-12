@@ -361,6 +361,23 @@ models:
           - relationships:
               to: ref('lnk_roadshowsale')
               field: hkey_lnk_roadshowsale
+        data_type: varchar
+      - name: sys_loadingid
+        data_type: integer
+      - name: sys_cdc
+        data_type: varchar
+      - name: sys_checksum
+        data_type: varchar
+      - name: saledate
+        data_type: date
+      - name: quantity
+        data_type: integer
+      - name: amount
+        data_type: double
+      - name: discount
+        data_type: double
+      - name: sys_loadingid_validto
+        data_type: integer
 
   - name: sat_association_context
     data_tests:
@@ -484,7 +501,7 @@ models:
 
   - name: ref_dateholiday_wide
     description: Wide table with holiday information. Just for unhistorize the psa table. Will get unpivoted in ref_dateholiday
-    
+
   - name: lsat_association_contact_dkh
     data_tests:
       - dbt_utils.unique_combination_of_columns:

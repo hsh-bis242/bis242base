@@ -33,4 +33,4 @@ SELECT  lh.loadingid AS sys_loadingid,
   JOIN  {{ effective_link("customer_association", "webshoporder_customer", "hkey_hub_customer", "lh.loadingid") }}
 
   -- delivery
-  JOIN  {{ effective_link("webshoporderitem_delivery", "sat_wsoi", "hkey_hub_webshoporderitem", "lh.loadingid") }}
+  LEFT JOIN  {{ effective_link("webshoporderitem_delivery", "sat_wsoi", "hkey_hub_webshoporderitem", "lh.loadingid") }}
