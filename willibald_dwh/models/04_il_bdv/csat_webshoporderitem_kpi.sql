@@ -1,5 +1,6 @@
 SELECT  brdg.hkey_hub_webshoporderitem,
         brdg.sys_loadingid,
+        sat_wsoi.sys_loadingid_validto,
         sat_wsoi.quantity,
         sat_wsoi.amount,
         sat_wso.discount,

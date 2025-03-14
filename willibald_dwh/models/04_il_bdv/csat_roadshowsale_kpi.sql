@@ -1,5 +1,6 @@
 SELECT  sat_rs_context.hkey_lnk_roadshowsale,
         sat_rs_context.sys_loadingid,
+        sat_rs_context.sys_loadingid_validto,
         sat_rs_context.quantity,
         sat_rs_context.amount,
         sat_rs_context.discount,
