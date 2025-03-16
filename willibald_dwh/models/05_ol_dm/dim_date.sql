@@ -4,10 +4,20 @@ WITH cte_date AS (
                 fsc.federalstate_code,
                 fsc.federalstate_name
     FROM        {{ ref("ref_date") }} dt
-   CROSS JOIN   {{ ref("federalstatecode") }} fsc
+   CROSS JOIN   (
+      SELECT  key,
+              federalstate_code,
+              federalstate_name
+        FROM  {{ ref("federalstatecode") }}
+      UNION ALL
+      SELECT  0 AS key,
+              'XX' AS federalstate_code,
+              'Unbekannt' AS federalstate_name
+    ) fsc
 )
 
-SELECT      dt.*,
+SELECT      {{hashcolumn(source_model_name = "dt", list_columns = ["date_day", "federalstate_key"], hashcolumn_name = "hkey_" + this.name)}},
+            dt.*,
             IFNULL(hol.fname,'') as holiday_name,
             IFNULL(hol.is_holiday, FALSE) as is_holiday,
             IFNULL(vac.name,'') as vacation_name,
