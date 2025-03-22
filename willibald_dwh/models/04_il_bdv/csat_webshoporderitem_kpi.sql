@@ -16,6 +16,6 @@ SELECT  brdg.hkey_hub_webshoporderitem,
   JOIN  {{ effective_sat("sat_webshoporder_context", "sat_wso", "hkey_hub_webshoporder", "brdg") }}
   LEFT JOIN {{ ref("lnk_webshoporderitem_delivery") }} lnk_wsoi_dlvry
     ON  brdg.hkey_lnk_webshoporderitem_delivery = lnk_wsoi_dlvry.hkey_lnk_webshoporderitem_delivery
-  JOIN  {{ effective_sat("sat_deliveryaddress_context", "sat_dlvry", "hkey_hub_deliveryaddress", "brdg") }}
-  JOIN  {{ ref("ref_postalcode_federalstate") }} rpf
+  LEFT JOIN  {{ effective_sat("sat_deliveryaddress_context", "sat_dlvry", "hkey_hub_deliveryaddress", "brdg") }}
+  LEFT JOIN  {{ ref("ref_postalcode_federalstate") }} rpf
     ON  rpf.postalcode = sat_dlvry.postalcode
