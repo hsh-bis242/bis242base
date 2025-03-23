@@ -1,6 +1,6 @@
 SELECT  brdg.hkey_hub_webshoporderitem,
         brdg.sys_loadingid,
-        sat_wsoi.sys_loadingid_validto,
+        LEAD(brdg.sys_loadingid, 1, 2^31 - 1) OVER (PARTITION BY {{ brdg.hkey_hub_webshoporderitem }} ORDER BY brdg.sys_loadingid) AS sys_loadingid_validto,
         sat_wsoi.quantity,
         sat_wsoi.amount,
         sat_wso.discount,
