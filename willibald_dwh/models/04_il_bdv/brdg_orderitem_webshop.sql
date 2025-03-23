@@ -13,11 +13,12 @@ SELECT  lh.loadingid AS sys_loadingid,
   JOIN  {{ ref("sat_webshoporderitem_context") }} sat_wsoi
     ON  lh.loadingid >= sat_wsoi.sys_loadingid
    AND  lh.loadingid < sat_wsoi.sys_loadingid_validto
+   AND  sat_wsoi.sys_cdc <> 'D'
 
    -- product
   JOIN  {{ effective_link("webshoporderitem_product", "sat_wsoi", "hkey_hub_webshoporderitem", "lh.loadingid") }}
   JOIN  {{ effective_link("product_productcategory", "webshoporderitem_product", "hkey_hub_product", "lh.loadingid") }}
-  JOIN  {{ effective_link("productcategory_supercategory", "product_productcategory", "hkey_hub_productcategory", "lh.loadingid") }}
+  LEFT JOIN  {{ effective_link("productcategory_supercategory", "product_productcategory", "hkey_hub_productcategory", "lh.loadingid") }}
 
   -- webshoporder
   JOIN  {{ effective_link("webshoporderitem_webshoporder", "sat_wsoi", "hkey_hub_webshoporderitem", "lh.loadingid") }}
@@ -30,7 +31,7 @@ SELECT  lh.loadingid AS sys_loadingid,
 
   -- customer
   JOIN  {{ effective_link("webshoporder_customer", "webshoporderitem_webshoporder", "hkey_hub_webshoporder", "lh.loadingid") }}
-  JOIN  {{ effective_link("customer_association", "webshoporder_customer", "hkey_hub_customer", "lh.loadingid") }}
+  LEFT JOIN  {{ effective_link("customer_association", "webshoporder_customer", "hkey_hub_customer", "lh.loadingid") }}
 
   -- delivery
   LEFT JOIN  {{ effective_link("webshoporderitem_delivery", "sat_wsoi", "hkey_hub_webshoporderitem", "lh.loadingid") }}
