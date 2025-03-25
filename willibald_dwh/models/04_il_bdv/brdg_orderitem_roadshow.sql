@@ -13,6 +13,6 @@ SELECT      lh.loadingid AS sys_loadingid,
     ON      lnk_rs.hkey_lnk_roadshowsale = sat_rs_context.hkey_lnk_roadshowsale
   JOIN      {{ ref("hub_customer") }} hub_cstmr
     ON      hub_cstmr.hkey_hub_customer = lnk_rs.hkey_hub_customer
-  JOIN      {{ effective_link("customer_creditcard", "lnk_rs", "hkey_hub_creditcard", "lh.loadingid") }}
+  LEFT JOIN {{ effective_link("customer_creditcard", "lnk_rs", "hkey_hub_creditcard", "lh.loadingid") }}
   JOIN      {{ effective_link("product_productcategory", "lnk_rs", "hkey_hub_product", "lh.loadingid") }}
-  JOIN      {{ effective_link("productcategory_supercategory", "product_productcategory", "hkey_hub_productcategory", "lh.loadingid") }}
+  LEFT JOIN {{ effective_link("productcategory_supercategory", "product_productcategory", "hkey_hub_productcategory", "lh.loadingid") }}
