@@ -1,5 +1,7 @@
 SELECT  sat_rs_context.hkey_lnk_roadshowsale,
         sat_rs_context.sys_loadingid,
+        sat_rs_context.sys_loadingid_validto,
+        sat_rs_context.sys_cdc,
         sat_rs_context.quantity,
         sat_rs_context.amount,
         sat_rs_context.discount,
@@ -9,5 +11,5 @@ SELECT  sat_rs_context.hkey_lnk_roadshowsale,
         sat_rs_context.saledate AS requesteddate,
         sat_rs_context.saledate AS deliverydate,
         0 AS deviation_delivery_request_days,
-        NULL AS federalstate_code
+        0 AS federalstate_key
   FROM  {{ ref("lsat_roadshowsale_context") }} sat_rs_context

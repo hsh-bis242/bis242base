@@ -15,4 +15,4 @@ def get_federal_state_key(postalcode):
     response.raise_for_status()  # Ensure we raise an error for bad responses
     locality = response.json()
 
-    return locality[0]["federalState"]["key"]
+    return int(locality[0]["federalState"]["key"])

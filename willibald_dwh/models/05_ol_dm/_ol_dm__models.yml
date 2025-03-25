@@ -7,3 +7,7 @@ models:
           combination_of_columns:
             - date_day
             - federalstate_key
+    columns:
+      - name: hkey_dim_date
+        data_tests:
+          - unique
