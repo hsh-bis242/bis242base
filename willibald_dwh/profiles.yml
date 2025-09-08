@@ -1,15 +1,16 @@
 willibald_dwh:
+  target: dev
   outputs:
     dev:
-      type: duckdb
-      path: "{{ env_var('WILLIBALD_DWH_DEV_PATH', '~/dev_willibald_dwh.duckdb') }}"
+      type: databricks
       schema: willibald
-      threads: 1
+      host: dbc-30dfc2de-0f3a.cloud.databricks.com
+      http_path: /sql/1.0/warehouses/d1ea857c635f2f13
+      token: "{{ env_var('DATABRICKS_TOKEN') }}"
 
     prod:
-      type: duckdb
-      path: "{{ env_var('WILLIBALD_DWH_DEV_PATH', '~/prod_willibald_dwh.duckdb') }}"
+      type: databricks
       schema: willibald
-      threads: 4
-
-  target: dev
+      host: dbc-30dfc2de-0f3a.cloud.databricks.com
+      http_path: /sql/1.0/warehouses/d1ea857c635f2f13
+      token: "{{ env_var('DATABRICKS_TOKEN') }}"
