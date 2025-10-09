@@ -21,7 +21,7 @@ seeds:
       show: true
     meta:
       unique_key:
-        - "\"Anzahl Tage von\""
+        - "Anzahl_Tage_von"
 
   - name: webshop_kunde
     docs:

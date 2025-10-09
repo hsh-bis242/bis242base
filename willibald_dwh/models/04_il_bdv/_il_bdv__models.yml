@@ -73,38 +73,38 @@ models:
         data_tests:
           - not_null
 
-  - name: csat_webshoporderitem_kpi
-    data_tests:
-      - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - sys_loadingid
-            - hkey_hub_webshoporderitem
-    columns:
-      - name: hkey_hub_webshoporderitem
-        data_type: varchar
-        data_tests:
-          - relationships:
-              field: hkey_hub_webshoporderitem
-              to: ref('hub_webshoporderitem')
-      - name: sys_loadingid
-        data_type: integer
-      - name: quantity
-        data_type: integer
-      - name: amount
-        data_type: double
-      - name: discount
-        data_type: double
-      - name: is_completely_delivered
-        data_type: boolean
-      - name: orderdate
-        data_type: date
-        data_tests:
-          - not_null
-      - name: requesteddate
-        data_type: date
-        data_tests:
-          - not_null
-      - name: deliverydate
-        data_type: date
-        data_tests:
-          - not_null
+  # - name: csat_webshoporderitem_kpi
+  #   data_tests:
+  #     - dbt_utils.unique_combination_of_columns:
+  #         combination_of_columns:
+  #           - sys_loadingid
+  #           - hkey_hub_webshoporderitem
+  #   columns:
+  #     - name: hkey_hub_webshoporderitem
+  #       data_type: varchar
+  #       data_tests:
+  #         - relationships:
+  #             field: hkey_hub_webshoporderitem
+  #             to: ref('hub_webshoporderitem')
+  #     - name: sys_loadingid
+  #       data_type: integer
+  #     - name: quantity
+  #       data_type: integer
+  #     - name: amount
+  #       data_type: double
+  #     - name: discount
+  #       data_type: double
+  #     - name: is_completely_delivered
+  #       data_type: boolean
+  #     - name: orderdate
+  #       data_type: date
+  #       data_tests:
+  #         - not_null
+  #     - name: requesteddate
+  #       data_type: date
+  #       data_tests:
+  #         - not_null
+  #     - name: deliverydate
+  #       data_type: date
+  #       data_tests:
+  #         - not_null

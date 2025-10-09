@@ -2,10 +2,10 @@
 
 source_model_name: v_webshop_href_termintreue
 unique_key:
-  - column_name: "\"Anzahl Tage von\""
+  - column_name: "Anzahl_Tage_von"
     business_name: number_of_days_from
 context_columns:
-  - column_name: "\"Anzahl Tage bis\""
+  - column_name: "Anzahl_Tage_bis"
     business_name: number_of_days_to
   - column_name: bezeichnung
     business_name: description

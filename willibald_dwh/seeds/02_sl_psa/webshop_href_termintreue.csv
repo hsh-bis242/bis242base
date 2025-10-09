@@ -1,4 +1,4 @@
-"sys_loadingid","sys_cdc","sys_checksum","Anzahl Tage von","Anzahl Tage bis","bezeichnung","bewertung"
+"sys_loadingid","sys_cdc","sys_checksum","Anzahl_Tage_von","Anzahl_Tage_bis","bezeichnung","bewertung"
 1,I,0x8a7ba5eebc8ae85073ea0b86a04a6eed67957bd6962eb6773043203efd3c2044,-1000000,-5,mehr als 5 Tage früher,viel zu früh
 1,I,0x1b1586cd74f391a667480530061d9bab464ba8c66955c25b5beafb30a3a09351,-5,"0",bis zu 5 Tagen zu früh,zu früh
 1,I,0x920335c44b384566404b797f2d31b997d5db728bcf721649fa0a669c09b94f46,"0","1",pünktlich,pünktlich

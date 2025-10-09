@@ -31,6 +31,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   willibald_dwh:
+    # set defaults for all .py models defined in this subfolder
+    +submission_method: serverless_cluster
+    +create_notebook: True
     00_example:
       +schema: 00_example
       +materialized: table  
