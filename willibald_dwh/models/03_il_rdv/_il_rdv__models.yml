@@ -547,7 +547,7 @@ models:
               to: ref('lnk_customer_creditcard')
               field: hkey_lnk_customer_creditcard
 
-  - name: lsat_product__productcategory_dkh
+  - name: lsat_product_productcategory_dkh
     data_tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns:
