@@ -3,14 +3,8 @@ willibald_dwh:
   outputs:
     dev:
       type: databricks
+      database: bis242_0x
       schema: willibald
-      host: dbc-30dfc2de-0f3a.cloud.databricks.com
-      http_path: /sql/1.0/warehouses/d1ea857c635f2f13
-      token: "{{ env_var('DATABRICKS_TOKEN') }}"
-
-    prod:
-      type: databricks
-      schema: willibald
-      host: dbc-30dfc2de-0f3a.cloud.databricks.com
-      http_path: /sql/1.0/warehouses/d1ea857c635f2f13
+      host: dbc-77aa5718-ad9a.cloud.databricks.com
+      http_path: /sql/1.0/warehouses/9d9d44f9428c50eb
       token: "{{ env_var('DATABRICKS_TOKEN') }}"
