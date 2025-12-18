@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: wanderbricks
+    database: samples
+    schema: wanderbricks
+    tables:
+      - name: bookings
+        description: "This table contains booking information for properties listed on the Wanderbricks platform."
+      - name: users
+      - name: properties
+      - name: destinations
+      - name: employees

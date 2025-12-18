@@ -1,0 +1,11 @@
+wanderbricks:
+  target: dev
+  outputs:
+    dev:
+      threads: 4
+      type: databricks
+      database: bis242_00
+      schema: wanderbricks
+      host: dbc-77aa5718-ad9a.cloud.databricks.com
+      http_path: /sql/1.0/warehouses/9d9d44f9428c50eb
+      token: "{{ env_var('DATABRICKS_TOKEN') }}"

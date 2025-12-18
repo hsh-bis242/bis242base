@@ -1,0 +1,164 @@
+version: 2
+
+models:
+  - name: dim_properties
+    description: "Dimension table containing property metadata for Wanderbricks (master list of accommodations)."
+    columns:
+      - name: property_id
+        description: "Surrogate/primary key for the property."
+        tests:
+          - not_null
+          - unique
+      - name: host_id
+        description: "Identifier for the host (owner) of the property."
+        tests:
+          - not_null
+      - name: destination_id
+        description: "Identifier that links the property to a destination or location grouping."
+      - name: title
+        description: "Short title of the property listing."
+      - name: description
+        description: "Longer free-text description of the property."
+      - name: base_price
+        description: "Base nightly price (in project currency) for the property."
+      - name: property_type
+        description: "Type/category of the property (e.g., apartment, house, cabin)."
+      - name: max_guests
+        description: "Maximum number of guests allowed."
+      - name: bedrooms
+        description: "Number of bedrooms in the property."
+      - name: bathrooms
+        description: "Number of bathrooms in the property."
+      - name: property_latitude
+        description: "Latitude coordinate of the property location."
+      - name: property_longitude
+        description: "Longitude coordinate of the property location."
+      - name: created_at
+        description: "Record creation timestamp from the source system."
+
+  - name: dim_destinations
+    description: "Dimension table of travel destinations and geographic metadata."
+    columns:
+      - name: destination_id
+        description: "Primary key for the destination."
+        tests:
+          - not_null
+          - unique
+      - name: destination
+        description: "Name of the destination (city, region or point of interest)."
+        tests:
+          - not_null
+      - name: country
+        description: "Country in which the destination is located."
+      - name: state_or_province
+        description: "State or province (if applicable)."
+      - name: state_or_province_code
+        description: "ISO or local code for the state/province."
+      - name: description
+        description: "Optional longer description of the destination."
+
+  - name: dim_user
+    description: "Dimension for users (customers and businesses) on the Wanderbricks platform."
+    columns:
+      - name: user_id
+        description: "Primary key for the user."
+        tests:
+          - not_null
+          - unique
+      - name: email
+        description: "User email address."
+        # tests:
+        #   - not_null
+      - name: name
+        description: "Display name of the user."
+      - name: country
+        description: "Country associated with the user."
+      - name: user_type
+        description: "User type (e.g., guest, host, admin)."
+      - name: created_at
+        description: "When the user account was created."
+      - name: is_business
+        description: "Flag indicating if the user is a business account."
+      - name: company_name
+        description: "Company name when `is_business` is true."
+
+  - name: dim_employee
+    description: "Employee records for property hosts (internal staff, cleaners, concierges, etc.)."
+    columns:
+      - name: employee_id
+        description: "Primary key for an employee."
+        tests:
+          - not_null
+          - unique
+      - name: host_id
+        description: "Host (employer) id that the employee is associated with."
+      - name: name
+        description: "Full name of the employee."
+      - name: role
+        description: "Role or job title of the employee."
+      - name: email
+        description: "Employee contact email."
+      - name: phone
+        description: "Contact phone number."
+      - name: country
+        description: "Country of residence or operation."
+      - name: joined_at
+        description: "Date the employee joined the host's organisation."
+      - name: end_service_date
+        description: "Optional date when the employee left service."
+      - name: is_currently_employed
+        description: "Boolean flag indicating active employment."
+
+  - name: fact_bookings
+    description: "Fact table recording bookings made on the Wanderbricks platform."
+    columns:
+      - name: booking_id
+        description: "Primary key for the booking."
+        tests:
+          - not_null
+          - unique
+      - name: user_id
+        description: "Reference to the booking user."
+      - name: property_id
+        description: "Reference to the booked property."
+      - name: check_in
+        description: "Booking check-in date."
+      - name: check_out
+        description: "Booking check-out date."
+      - name: guests_count
+        description: "Number of guests for the booking."
+      - name: total_amount
+        description: "Total charged amount for the booking."
+      - name: status
+        description: "Booking status (e.g., confirmed, cancelled)."
+      - name: created_at
+        description: "When the booking was created."
+      - name: updated_at
+        description: "Last update timestamp for the booking."
+
+  - name: flat_bookings
+    description: "Denormalized booking view/table that joins bookings with users, properties, destinations and host employee counts for easy reporting."
+    columns:
+      - name: booking_id
+        description: "Booking primary key (from fact_bookings)."
+        tests:
+          - not_null
+          - unique
+      - name: user_id
+        description: "Reference to the booking user (FK to `dim_user`)."
+      - name: user_name
+        description: "Cached user display name from `dim_user`."
+      - name: user_email
+        description: "Cached user email from `dim_user`."
+      - name: property_id
+        description: "Reference to the booked property (FK to `dim_properties`)."
+      - name: property_title
+        description: "Cached title of the property."
+      - name: destination_name
+        description: "Cached destination name for the property."
+      - name: nights
+        description: "Number of nights for the booking (calculated as datediff(check_out, check_in))."
+      - name: price_per_night
+        description: "Derived price per night (total_amount / nights)."
+      - name: host_employee_count
+        description: "Count of currently employed staff for the host (aggregated from `dim_employee`)."
