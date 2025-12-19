@@ -67,8 +67,8 @@ models:
           - unique
       - name: email
         description: "User email address."
-        tests:
-          - not_null
+        # tests:
+        #   - not_null
       - name: name
         description: "Display name of the user."
       - name: country

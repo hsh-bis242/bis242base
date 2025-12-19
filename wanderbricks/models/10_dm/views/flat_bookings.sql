@@ -1,5 +1,3 @@
-{{ config(materialized='table') }}
-
 -- flat denormalized bookings table
 with employees_per_host as (
   select

@@ -37,9 +37,11 @@ models:
     +persist_docs:
       relation: true
       columns: true
-    10_example:
-      +schema: 00_example
-      +materialized: table  
+    10_dm:
+      +schema: 10_dm
+      +materialized: table
+      view:
+        +materialized: view
 
     01_sl_stg:
       +schema: sl_stg
