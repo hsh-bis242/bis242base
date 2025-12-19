@@ -8,6 +8,7 @@ select
     check_out,
     guests_count,
     total_amount,
+    {{eur_to_usd('total_amount')}} as total_amount_usd,
     status,
     created_at,
     updated_at
