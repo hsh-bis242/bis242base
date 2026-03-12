@@ -6,19 +6,7 @@ source_models:
     - name: v_webshop_kunde
       bk_columns:
         - kundeid
-    - name: v_webshop_vereinspartner
-      bk_columns:
-        - kundeidverein
-    - name: v_roadshow_bestellung
-      bk_columns:
-        - kundeid
     - name: v_webshop_bestellung
-      bk_columns:
-        - kundeid
-    - name: v_webshop_lieferadresse
-      bk_columns:
-        - kundeid
-    - name: v_webshop_wohnort
       bk_columns:
         - kundeid
 

@@ -6,9 +6,6 @@ source_models:
     - name: v_webshop_bestellung
       bk_columns:
         - bestellungid
-    - name: v_webshop_lieferung
-      bk_columns:
-        - bestellungid
     - name: v_webshop_position
       bk_columns:
         - bestellungid

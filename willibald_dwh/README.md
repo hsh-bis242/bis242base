@@ -9,6 +9,8 @@ To get up and running run following commands:
 - dbt run
 - dbt test
 
+> **Hinweis:** Detaillierte Informationen zu Schichtenarchitektur, Modellübersicht, Namenskonventionen und Tabellenbudget finden Sie in [INSTRUCTIONS.md](INSTRUCTIONS.md).
+
 ### How does the willibald data gets loaded to the database?
 
 Originally the willibald data comes within three loading periods. We persisted these three periods in a very basic persistent

@@ -9,9 +9,6 @@ source_models:
     - name: v_webshop_position
       bk_columns:
         - produktid
-    - name: v_webshop_produkt
-      bk_columns:
-        - produktid
 
         
 

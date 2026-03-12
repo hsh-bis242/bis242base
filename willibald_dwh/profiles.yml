@@ -3,8 +3,9 @@ willibald_dwh:
   outputs:
     dev:
       type: databricks
-      database: bis242_0x
+      database: bis242_00
       schema: willibald
-      host: dbc-77aa5718-ad9a.cloud.databricks.com
-      http_path: /sql/1.0/warehouses/9d9d44f9428c50eb
+      host: dbc-15d76289-5b7c.cloud.databricks.com
+      http_path: /sql/1.0/warehouses/4c4bcb9dfa01a5f0
       token: "{{ env_var('DATABRICKS_TOKEN') }}"
+      threads: 10
